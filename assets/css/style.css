@@ -93,6 +93,9 @@ a{
 #content .introduce{
     position: relative;
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: url('/assets/img/bng-login.webp') center / cover no-repeat;
 }
 
@@ -103,7 +106,7 @@ a{
 }
 
 #content .introduce .box-intro{
-    width: 50%;
+    width: 48%;
     min-height: 500px;
     background-color: transparent;
     border: 5px solid #fff;
@@ -119,9 +122,20 @@ a{
     padding-bottom: 12px;
 }
 
-#content p{
+#content .box-intro p{
     color: #fff;
     padding: 6px 24px;
+}
+
+#content .introduce .box-useful{
+    width: 48%;
+    min-height: 500px;
+    background-color: transparent;
+    border: 5px solid #fff;
+    margin: 10px 10px;
+    border-radius: 6%;
+    color: #162938;
+    backdrop-filter: blur(20px);
 }
 
 
@@ -156,4 +170,16 @@ footer > a{
 .social-icon a{
     padding: 12px 24px;
     font-size: 1rem;
+}
+
+.introduce .box-useful ol{
+    color: #fff;
+    padding: 6px 0;
+    padding-left: 40px;
+    font-weight: bold;
+}
+
+.introduce .box-useful p{
+    padding: 0;
+    font-weight: lighter;
 }
