@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+header{
+    height: 60px;
+    display: inline-block;
+    background-color: #47b2cf;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+}
+
+
+#nav {
+    display: inline-block;
+}
+
+#nav .nav-main li {
+    display: inline-block;
+}
+
+#login{
+    height: 60px;
+    float: right;
+    line-height: 60px;
+}
+
+#login .login-btn{
+    display: block;
+    width: auto;
+    height: 100%;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: #47b2cf;
+    padding: 14px 20px;
+    cursor: pointer;
+}
+.nav-main li:hover a{
+    background-color: #ccc;
+}
+
+#login .login-btn:hover {
+    background-color: bisque;
+}
+
+#nav .nav-main a{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    line-height: 60px;
+    padding: 0 24px;
+    font-weight: bold;
+}
