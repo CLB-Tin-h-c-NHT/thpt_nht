@@ -9,11 +9,12 @@
 header{
     height: 60px;
     display: inline-block;
-    background-color: #47b2cf;
+    background-color: #162938;
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 10;
+    z-index: 100;
 }
+
 
 
 #nav {
@@ -29,7 +30,8 @@ header{
 #nav .sub-nav{
     display: none;
     position: absolute;
-    background-color: #47b2cf;
+    background-color: #162938;
+    transition: .7s;
 }
 
 #nav li:hover .sub-nav {
@@ -44,19 +46,24 @@ header{
     height: 60px;
     float: right;
     line-height: 60px;
+    margin-right: 36px;
 }
 
 #login .login-btn{
-    display: block;
-    width: auto;
-    height: 100%;
+    width: 150px;
+    height: 80%;
     border: none;
     color: #fff;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
     font-weight: bold;
     font-size: 1rem;
-    background-color: #47b2cf;
+    background-color: transparent;
     padding: 14px 20px;
     cursor: pointer;
+    font-weight: 500;
+    transition: .5s;
 }
 .nav-main li:hover > a{
     background-color: #ccc;
@@ -66,10 +73,13 @@ header{
     background-color: bisque;
 }
 
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
 #nav .nav-main a{
     display: block;
-    color: #fff;
-    text-decoration: none;
     line-height: 60px;
     padding: 0 24px;
     font-weight: bold;
@@ -82,25 +92,31 @@ header{
 }
 #content .introduce{
     position: relative;
-    width: 95%;
-    background-color: #000;
-    margin-top: 25px;
     padding: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 30px;
+    background: url('/assets/img/bng-login.webp') center / cover no-repeat;
 }
+
+#content .intro-bg-img{
+    display: block;
+    padding-top: 40%;
+    background: url('/assets/img/nht.jpg') top center / cover no-repeat;
+}
+
 #content .introduce .box-intro{
     width: 50%;
     min-height: 500px;
-    background-color: #E98EAD;
+    background-color: transparent;
+    border: 5px solid #fff;
     margin: 10px 10px;
     border-radius: 6%;
+    color: #162938;
+    backdrop-filter: blur(20px);
 }
 
 #content h3{
     color: #fff;
-    padding: 12px 24px;
+    text-align: center;
+    padding-bottom: 12px;
 }
 
 #content p{
@@ -115,20 +131,29 @@ header{
     padding-left: 50px;
 }
 
-#content .img-school{
-    width: 45%;
-    height: 100%;
-    position: absolute;
-    top: 0; 
-    left: 53%;
-    padding-top: 10%;
-    border-radius: 6%;
+footer{
+    display: block;
+    height: 150px;
+    background-color: #000;
 }
-    
-#content .img-school img{
-    width: 90%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+
+footer h3{
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 24px;
+}
+
+footer > a{
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+.social-icon li{
+    display: inline-block;
+}
+
+.social-icon a{
+    padding: 12px 24px;
+    font-size: 1rem;
 }
