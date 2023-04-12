@@ -12,6 +12,7 @@ header{
     background-color: #47b2cf;
     position: fixed;
     top: 0; left: 0; right: 0;
+    z-index: 10;
 }
 
 
@@ -72,4 +73,49 @@ header{
     line-height: 60px;
     padding: 0 24px;
     font-weight: bold;
+}
+
+#content{
+    display: inline-block;
+    width: 100%;
+    margin-top: 60px;
+}
+#content .introduce{
+    position: relative;
+}
+#content .introduce .box-intro{
+    width: 50%;
+    min-height: 500px;
+    background-color: #000;
+    margin: 10px 10px;
+    border-radius: 15px;
+}
+
+#content h3{
+    color: #fff;
+    padding: 12px 24px;
+}
+
+#content p{
+    color: #fff;
+    padding: 6px 24px;
+}
+
+
+#content .member{
+    color: #fff;    
+    padding: 6px 0;
+    padding-left: 50px;
+}
+
+#content .img-school{
+    width: 45%;
+    height: auto;
+    position: absolute;
+    top: 15%; 
+    left: 53%;
+}
+
+#content .img-school img{
+    width: 100%;
 }
