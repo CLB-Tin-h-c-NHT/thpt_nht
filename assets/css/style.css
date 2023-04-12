@@ -19,8 +19,24 @@ header{
     display: inline-block;
 }
 
+
 #nav .nav-main li {
     display: inline-block;
+    position: relative;
+}
+
+#nav .sub-nav{
+    display: none;
+    position: absolute;
+    background-color: #47b2cf;
+}
+
+#nav li:hover .sub-nav {
+    display: block;
+}
+
+#nav .sub-nav li{
+    width: 100%;
 }
 
 #login{
@@ -41,7 +57,7 @@ header{
     padding: 14px 20px;
     cursor: pointer;
 }
-.nav-main li:hover a{
+.nav-main li:hover > a{
     background-color: #ccc;
 }
 
