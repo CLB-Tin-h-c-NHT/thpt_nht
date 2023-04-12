@@ -82,13 +82,20 @@ header{
 }
 #content .introduce{
     position: relative;
+    width: 95%;
+    background-color: #000;
+    margin-top: 25px;
+    padding: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 30px;
 }
 #content .introduce .box-intro{
     width: 50%;
     min-height: 500px;
-    background-color: #000;
+    background-color: #E98EAD;
     margin: 10px 10px;
-    border-radius: 15px;
+    border-radius: 6%;
 }
 
 #content h3{
@@ -110,12 +117,18 @@ header{
 
 #content .img-school{
     width: 45%;
-    height: auto;
+    height: 100%;
     position: absolute;
-    top: 15%; 
+    top: 0; 
     left: 53%;
+    padding-top: 10%;
+    border-radius: 6%;
 }
-
+    
 #content .img-school img{
-    width: 100%;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
