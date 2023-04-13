@@ -1,0 +1,93 @@
+
+body{
+    width: 100%;
+    background: url('/assets/img/bng-tkb.jpg') top center / cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header{
+    background-color: transparent;
+    border-bottom: 5px solid #162938;
+}
+
+header a{
+    color: #162938;
+}
+
+#nav .sub-nav{
+    background-color: transparent;
+    border: 2px solid #162938;
+    backdrop-filter: blur(20px);
+}
+
+.nav-main li:hover > a{
+    background-color: #162938;
+    color: #fff;
+}
+
+.container{
+    width: 80%;
+    background: transparent;
+    margin-top: 100px;
+}
+
+.cls-tblTKB{
+    border: 2px;
+    border-style: solid;
+    border-color: #fff;
+    text-align: center;
+}
+
+.btn-tkb{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid #162938;
+}
+
+tr{
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.btn-tkb .class-btn{
+    background: transparent;
+    width: 150px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #162938;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn-tkb .class-btn.active{
+    color: #B25068;
+    border-bottom: 3px solid #fff;
+    transition: .5s ease;
+}
+
+.tkb-tb{
+    padding: 50px;
+}
+
+.tkb-tb .cls-tblTKB{
+    display: none;
+    backdrop-filter: blur(20px);
+}
+
+.line{
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.tkb-tb .cls-tblTKB.active {
+    display: block;
+    animation: moving .5s ease;
+}
+
