@@ -35,22 +35,22 @@
     <div class="wrapper">
         <div class="form-box login">
             <h2>Login</h2>
-            <form action="#">
+            <form action="/index.html">
                 <div class="input-box">
                     <span class="icon"><i class="fa-regular fa-user"></i></span>
-                    <input type="User" required>
+                    <input id="idUser" type="User" required>
                     <label>User</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><i class="fa-solid fa-lock"></i></span>
-                    <input type="password" required>
+                    <input id="idPassword" type="password" required>
                     <label>Password</label>
                 </div>
-                <div class="selector">
+                <div class="selector" id="idSelector">
                     <label> <input type="radio" name="roll-select" required> Học sinh</label>
                     <label> <input type="radio" name="roll-select" required> Giáo Viên</label>
                 </div>
-                <div class="btn-login">
+                <div class="btn-login" id="idBtnLogin">
                     <button type="submit" class="btn">Login</button>
                 </div>
             </form>
