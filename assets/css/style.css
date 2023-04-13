@@ -28,15 +28,6 @@ header{
     position: relative;
 }
 
-@keyframes rollDown{
-    from{
-        transform: translateY(-100%);
-    }
-
-    to{
-        transform: translateY(0%);
-    }
-}
 
 #nav .sub-nav{
     display: none;
@@ -46,7 +37,16 @@ header{
 
 #nav li:hover .sub-nav {
     display: block;
-    animation: rollDown .5s ease 0s 1 normal;
+    animation: moving .5s ease;
+}
+
+@keyframes moving{
+    from{
+        transform: translateX(50px); opacity: 0;
+    }
+    to{
+        transform: translateX(0); opacity: 1;
+    }
 }
 
 #nav .sub-nav li{

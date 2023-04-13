@@ -4,9 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style-chat.css">
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <div id="nav">
+            <ul class="nav-main">
+                <li><a href="/index.html"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                <li>
+                    <a href=""><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
+                    <ul class="sub-nav">
+                        <li><a href="">Lớp 10</a></li>
+                        <li><a href="">Lớp 11</a></li>
+                        <li><a href="">Lớp 12</a></li>
+                    </ul>
+                </li>
+                <li><a href=""><i class="fa-solid fa-book"></i> Bài tập</a></li>
+                <li><a href="/assets/html/chat.html">
+                    <i class="fa-solid fa-message"></i> Thảo luận</a>
+                </li>
+                <li><a href="/assets/html/leaderboard.html"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+            </ul>
+        </div>
+        <div id="login">
+            <button class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="tab-box">
+            <button class="tab-btn active">Học tập</button>
+            <button class="tab-btn">Confession</button>
+            <button class="tab-btn">Khác</button>
+        </div>
+        <div class="content-box">
+            <div id="study" class="content active">
+                <div class="post">
+                    <h2>Study</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
+                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
+                    </p>
+                </div>
+            </div>
     
+            <div id="cfs" class="content">
+                <div class="post">
+                    <h2>Confession</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
+                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
+                    </p>
+                </div>
+            </div>
+    
+            <div id="other-chat" class="content">
+                <div class="post">
+                    <h2>Khác</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
+                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/scripts/chat.js"></script>
 </body>
 </html>

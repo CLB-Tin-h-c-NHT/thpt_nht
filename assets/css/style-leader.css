@@ -1,29 +1,4 @@
-#leader-main{
-    height: 100vh;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    background: url('/assets/img/bng-leader.webp') top center / cover no-repeat;
-    text-align: center;
-}
 
-#leader-main h1{
-    height: 10px;
-    width: 150px;
-    position: absolute;
-    margin-top: 25px;
-    top: 0;
-    line-height: 200px;
-}
-
-#leader-table{
-    height: auto;
-    width: 50%;  
-    font-weight: 500;
-    border: 2px solid #162938;
-    border-radius: 25px;
-    }
 
 header{
     background-color: transparent;
@@ -51,4 +26,44 @@ header a{
   
 #login .login-btn:hover {
     background-color: #fff;
+}
+
+#leader-main .leader-t{
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+#leader-main{
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: url('/assets/img/bng-leader.webp') top center / cover no-repeat;
+    text-align: center;
+}
+
+.leader-t::before{
+    content: "BXH Học kì 1" ;
+    color: #162938;
+    font-weight: 1000;
+    font-size: 36px;
+    position: absolute;
+    top: 10%;
+}
+
+.leader-t #leader-table{
+    height: auto;
+    width: 50%;  
+    font-weight: 500;
+    border: 2px solid #162938;
+    border-radius: 25px;
+    margin-top: 10%;
+}   
+
+tr{
+    line-height: 40px;
 }
