@@ -1,0 +1,54 @@
+#leader-main{
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: url('/assets/img/bng-leader.webp') top center / cover no-repeat;
+    text-align: center;
+}
+
+#leader-main h1{
+    height: 10px;
+    width: 150px;
+    position: absolute;
+    margin-top: 25px;
+    top: 0;
+    line-height: 200px;
+}
+
+#leader-table{
+    height: auto;
+    width: 50%;  
+    font-weight: 500;
+    border: 2px solid #162938;
+    border-radius: 25px;
+    }
+
+header{
+    background-color: transparent;
+    border-bottom: 5px solid #162938;
+}
+
+header a{
+    color: #162938;
+}
+
+#nav .sub-nav{
+    background-color: transparent;
+    border: 2px solid #162938;
+    backdrop-filter: blur(20px);
+}
+
+.nav-main li:hover > a{
+    background-color: #162938;
+    color: #fff;
+}
+
+#login .login-btn{
+    border: 2px solid #162938;
+}
+  
+#login .login-btn:hover {
+    background-color: #fff;
+}

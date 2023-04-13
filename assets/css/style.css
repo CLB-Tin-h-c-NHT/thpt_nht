@@ -5,6 +5,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Phần đầu trang */
 
 header{
     height: 60px;
@@ -12,7 +13,7 @@ header{
     background-color: #162938;
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 10;
 }
 
 
@@ -27,20 +28,31 @@ header{
     position: relative;
 }
 
+@keyframes rollDown{
+    from{
+        transform: translateY(-100%);
+    }
+
+    to{
+        transform: translateY(0%);
+    }
+}
+
 #nav .sub-nav{
     display: none;
     position: absolute;
     background-color: #162938;
-    transition: .7s;
 }
 
 #nav li:hover .sub-nav {
     display: block;
+    animation: rollDown .5s ease 0s 1 normal;
 }
 
 #nav .sub-nav li{
     width: 100%;
 }
+
 
 #login{
     height: 60px;
@@ -69,6 +81,7 @@ header{
     background-color: #ccc;
 }
 
+    
 #login .login-btn:hover {
     background-color: bisque;
 }
@@ -84,6 +97,8 @@ a{
     padding: 0 24px;
     font-weight: bold;
 }
+
+/* Phần content */
 
 #content{
     display: inline-block;
@@ -145,6 +160,19 @@ a{
     padding-left: 50px;
 }
 
+.introduce .box-useful ol{
+    color: #fff;
+    padding: 6px 0;
+    padding-left: 40px;
+    font-weight: bold;
+}
+
+.introduce .box-useful p{
+    padding: 0;
+    font-weight: lighter;
+}
+
+/* Phần chân trang web */
 footer{
     display: block;
     height: 150px;
@@ -170,16 +198,4 @@ footer > a{
 .social-icon a{
     padding: 12px 24px;
     font-size: 1rem;
-}
-
-.introduce .box-useful ol{
-    color: #fff;
-    padding: 6px 0;
-    padding-left: 40px;
-    font-weight: bold;
-}
-
-.introduce .box-useful p{
-    padding: 0;
-    font-weight: lighter;
 }

@@ -116,3 +116,8 @@ header{
     border: 2px solid #fff;
     backdrop-filter: blur(20px);
 }
+
+.nav-main li:hover > a{
+    background-color: #fff;
+    color: #162938;
+}
