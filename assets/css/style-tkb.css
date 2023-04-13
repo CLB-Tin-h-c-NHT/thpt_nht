@@ -78,6 +78,7 @@ tr{
 .tkb-tb .cls-tblTKB{
     display: none;
     backdrop-filter: blur(20px);
+    border-radius: 20px;
 }
 
 .line{
