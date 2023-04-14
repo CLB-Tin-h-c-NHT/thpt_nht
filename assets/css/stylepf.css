@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    height:100vh;
+    text-align: center;
+    background-image:url("/assets/img/bng-login.webp")
+    
+}
+.ct{
+    width:350px;
+    height:459px;
+}
+.ct img{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+    margin:20px auto;
+    cursor: pointer;
+    position: relative;
+}
+.ct h2{
+    color:aliceblue;
+}
+.ct a{
+    margin: 0 30px 12px;
+    color:aliceblue
+}
