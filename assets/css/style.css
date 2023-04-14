@@ -103,7 +103,6 @@ a{
 #content{
     display: inline-block;
     width: 100%;
-    margin-top: 60px;
 }
 #content .introduce{
     position: relative;
@@ -114,11 +113,6 @@ a{
     background: url('/assets/img/bng-login.webp') center / cover no-repeat;
 }
 
-#content .intro-bg-img{
-    display: block;
-    padding-top: 40%;
-    background: url('/assets/img/nht.jpg') top center / cover no-repeat;
-}
 
 #content .introduce .box-intro{
     width: 48%;
@@ -198,4 +192,60 @@ footer > a{
 .social-icon a{
     padding: 12px 24px;
     font-size: 1rem;
+}
+
+/* slider */
+.slider-bng{
+    max-width: 100%;
+    margin-top: 60px auto 0;
+    background: url('/assets/img/bng-chat.jpg') top center / cover no-repeat;
+    position: relative;
+    padding-bottom: 25px;
+}   
+
+.slider{
+    max-width: 1000px;
+    position: relative;
+    padding-top: 15px;
+    margin: 60px auto 0;
+}
+
+.slider-bng h3{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+}
+
+.slider-wrapper{
+    width: 100%;
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.slider-main{
+    display: flex;
+    position: relative;
+}
+
+.slider-main.active{
+    transition: transform .25s linear;
+}
+
+.slider-item{
+    width: 100%;
+    height: 93%;
+    flex: 1 0 100%;
+    border: 3px solid #fff;
+    border-radius: 20px;
+}
+
+.slider-main img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
 }
