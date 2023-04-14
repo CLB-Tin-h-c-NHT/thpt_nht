@@ -82,8 +82,11 @@ header{
 }
 
     
-#login .login-btn:hover {
-    background-color: bisque;
+#login .login-btn:hover{
+    background-color: #fff;
+}
+#login .login-btn:hover a{
+    color: #162938;
 }
 
 a{

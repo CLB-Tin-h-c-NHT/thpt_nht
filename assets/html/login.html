@@ -9,30 +9,6 @@
     <title>Đăng nhập</title>
 </head>
 <body>
-    <header>
-        <div id="nav">
-            <ul class="nav-main">
-                <li><a href="/index.html"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-                <li>
-                    <a href=""><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
-                    <ul class="sub-nav">
-                        <li><a href="/assets/html/TKB/tkb10.html">Lớp 10</a></li>
-                        <li><a href="">Lớp 11</a></li>
-                        <li><a href="">Lớp 12</a></li>
-                    </ul>
-                </li>
-                <li><a href=""><i class="fa-solid fa-book"></i> Bài tập</a></li>
-                <li><a href="/assets/html/chat.html">
-                    <i class="fa-solid fa-message"></i> Thảo luận</a>
-                </li>
-                <li><a href="/assets/html/leaderboard.html"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
-            </ul>
-        </div>
-        <div id="login">
-            <button class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
-        </div>
-    </header>
-    <body>
         <header>
             <div id="nav">
                 <ul class="nav-main">
@@ -40,48 +16,82 @@
                     <li>
                         <a href=""><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
                         <ul class="sub-nav">
-                            <li><a href="/assets/html/tkb10.html">Lớp 10</a></li>
+                            <li><a href="/assets/html/TKB/tkb10.html">Lớp 10</a></li>
                             <li><a href="">Lớp 11</a></li>
                             <li><a href="">Lớp 12</a></li>
                         </ul>
                     </li>
                     <li><a href=""><i class="fa-solid fa-book"></i> Bài tập</a></li>
-                    <li><a href="">
+                    <li><a href="/assets/html/chat.html">
                         <i class="fa-solid fa-message"></i> Thảo luận</a>
-                        <ul class="sub-nav">
-                            <li><a href="">Học tập</a></li>
-                            <li><a href="">Confessions</a></li>
-                            <li><a href="">Khác</a></li>
-                        </ul>
                     </li>
-                    <li><a href=""><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+                    <li><a href="/assets/html/leaderboard.html"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
                 </ul>
+            </div>
+            <div id="login">
+                <button class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
             </div>
         </header>
     <div class="wrapper">
-        <div class="form-box login">
-            <h2>Login</h2>
-            <form action="/index.html">
-                <div class="input-box">
-                    <span class="icon"><i class="fa-regular fa-user"></i></span>
-                    <input id="idUser" type="User" required>
-                    <label>User</label>
+        <div class="slider-main">
+            <div class="form-box login">
+                <h2>Đăng nhập</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-regular fa-user"></i></span>
+                        <input id="idUser" type="User" required>
+                        <label>Tên đăng nhập</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                        <input id="idPassword" type="password" required>
+                        <label>Mật khẩu</label>
+                    </div>
+                    <div class="selector" id="idSelector">
+                        <label> <input type="radio" name="roll-select" required> Học sinh</label>
+                        <label> <input type="radio" name="roll-select" required> Giáo Viên</label>
+                    </div>
+                    <div class="btn-login" id="idBtnLogin">
+                        <button type="submit" class="btn">Đăng nhập</button>
+                    </div>
+                </form>
+                <div class="btn-create register">
+                    <button type="submit" class="btn btnRegister">Tạo tài khoản</button>
                 </div>
-                <div class="input-box">
-                    <span class="icon"><i class="fa-solid fa-lock"></i></span>
-                    <input id="idPassword" type="password" required>
-                    <label>Password</label>
+            </div>
+            <div class="form-box register">
+                <h2>Tạo tài khoản</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-regular fa-user"></i></span>
+                        <input id="idName" type="Name" required>
+                        <label>Họ và tên</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-regular fa-user"></i></span>
+                        <input id="idUserRegister" type="User" required>
+                        <label>Tên đăng nhập</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                        <input id="idPasswordRegister" type="password" required>
+                        <label>Mật khẩu</label>
+                    </div>
+                    <div class="selector" id="idSelectorRegister">
+                        <label> <input type="radio" name="roll-select" required> Học sinh</label>
+                        <label> <input type="radio" name="roll-select" required> Giáo Viên</label>
+                    </div>
+                    <div class="btn-login" id="idBtnRegiter">
+                        <button type="submit" class="btn">Tạo tài khoản</button>
+                    </div>
+                </form>
+                <div class="btn-create Login">
+                    <button type="submit" class="btn btnLogin">Đăng nhập</button>
                 </div>
-                <div class="selector" id="idSelector">
-                    <label> <input type="radio" name="roll-select" required> Học sinh</label>
-                    <label> <input type="radio" name="roll-select" required> Giáo Viên</label>
-                </div>
-                <div class="btn-login" id="idBtnLogin">
-                    <button type="submit" class="btn">Login</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
+    <script src="/assets/scripts/slider-login.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
 </body>
 </html>
