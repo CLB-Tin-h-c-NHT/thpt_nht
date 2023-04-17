@@ -4,7 +4,6 @@ window.addEventListener("load", function(){
     const sliderItem = document.querySelectorAll(".slider-item")
     const sliderItemWidth = sliderItem[0].offsetWidth;
     const sliderLength = sliderItem.length;
-    console.log(sliderLength);
     let positionX = 0;
     let id = 0;
 

@@ -14,7 +14,7 @@
             <ul class="nav-main">
                 <li><a href="/index.html"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
                 <li>
-                    <a href=""><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
+                    <a href="#"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
                     <ul class="sub-nav">
                         <li><a href="/assets/html/TKB/tkb10.html">Lớp 10</a></li>
                         <li><a href="">Lớp 11</a></li>
@@ -25,11 +25,14 @@
                 <li><a href="/assets/html/chat.html">
                     <i class="fa-solid fa-message"></i> Thảo luận</a>
                 </li>
-                <li><a href=""><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+                <li><a href="/assets/html/leaderboard.html"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
             </ul>
         </div>
-        <div id="login">
+        <div id="login" class="status">
             <button class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
+        </div>
+        <div id="login" class="status active">
+            <button class="login-btn" type="submit"><a href="/assets/html/profile_hs.html"><i class="fa-solid fa-user"></i> Profile </a></button>
         </div>
     </header>
     <section id="leader-main">
@@ -103,6 +106,7 @@
             </table>
         </div>
     </section>
+    <script src="/assets/scripts/login.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
 
 </body>

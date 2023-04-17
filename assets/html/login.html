@@ -14,7 +14,7 @@
                 <ul class="nav-main">
                     <li><a href="/index.html"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
                     <li>
-                        <a href="#"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
+                        <a href=""><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
                         <ul class="sub-nav">
                             <li><a href="/assets/html/TKB/tkb10.html">Lớp 10</a></li>
                             <li><a href="">Lớp 11</a></li>
@@ -28,15 +28,18 @@
                     <li><a href="/assets/html/leaderboard.html"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
                 </ul>
             </div>
-            <div id="login">
+            <div id="login" class="status">
                 <button class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
+            </div>
+            <div id="login" class="status active">
+                <button class="login-btn" type="submit"><a href="/assets/html/profile_hs.html"><i class="fa-solid fa-user"></i> Profile </a></button>
             </div>
         </header>
     <div class="wrapper">
         <div class="slider-main">
             <div class="form-box login">
                 <h2>Đăng nhập</h2>
-                <form action="#">
+                <form onsubmit="login()">
                     <div class="input-box">
                         <span class="icon"><i class="fa-regular fa-user"></i></span>
                         <input id="idUser" type="User" required>
@@ -61,7 +64,7 @@
             </div>
             <div class="form-box register">
                 <h2>Tạo tài khoản</h2>
-                <form action="#">
+                <form onsubmit="register()">
                     <div class="input-box">
                         <span class="icon"><i class="fa-regular fa-user"></i></span>
                         <input id="idName" type="Name" required>
@@ -91,7 +94,7 @@
             </div>
         </div>
     </div>
-
+    <script src="/assets/scripts/login.js"></script>
     <script src="/assets/scripts/slider-login.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
 </body>
