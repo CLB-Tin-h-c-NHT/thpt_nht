@@ -23,7 +23,7 @@ body{
     overflow: hidden;
     position: relative;
     width: 400px;
-    height: 450px;
+    height: 450 px;
     background: transparent;
     border: 7px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
