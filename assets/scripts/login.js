@@ -7,6 +7,7 @@ function register(e){
     // document.getElementById('idBtnRegiter').addEventListener('click', function() {
         // Lấy giá trị của các trường input
         var name = document.getElementById('idName').value;
+        var Class = document.getElementById('idClass').value;
         var userName = document.getElementById('idUserRegister').value;
         var password = document.getElementById('idPasswordRegister').value;
         var typeLog = "student";
@@ -16,6 +17,7 @@ function register(e){
             // Tạo đối tượng user
             var user = {
                 name: name,
+                Class : Class,
                 userName: userName,
                 password: password,
                 typeLog: typeLog
