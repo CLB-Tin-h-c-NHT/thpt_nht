@@ -11,10 +11,10 @@ body{
     background-position: center;
 }
 
-#login .login-btn:hover{
+.btn-login:hover .btn{
     background-color: #fff;
 }
-#login .login-btn:hover a{
+.btn-login:hover button{
     color: #162938;
 }
 
@@ -29,6 +29,7 @@ body{
     border-radius: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    align-items: center;
 }
 
 .wrapper h2{
