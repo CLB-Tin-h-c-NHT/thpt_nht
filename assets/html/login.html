@@ -1,67 +1,40 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Đăng Nhập</title>
     <link rel="stylesheet" href="/assets/css/style-login.css">
-    <title>Đăng nhập</title>
+    <script src="https://kit.fontawesome.com/5f842d0b87.js" crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>    
 </head>
 <body>
-        <header>
-            <div id="nav">
-                <ul class="nav-main">
-                    <li><a href="/index.html"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-                    <li>
-                        <a href=""><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
-                        <ul class="sub-nav">
-                            <li><a href="/assets/html/TKB/tkb10.html">Lớp 10</a></li>
-                            <li><a href="">Lớp 11</a></li>
-                            <li><a href="">Lớp 12</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa-solid fa-book"></i> Bài tập</a>
-                        <ul class="sub-nav">
-                            <li><a href="/assets/html/math.html">Geogebra</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/assets/html/chat.html">
-                        <i class="fa-solid fa-message"></i> Thảo luận</a>
-                    </li>
-                    <li><a href="/assets/html/leaderboard.html"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
-                </ul>
+    <div class="container">
+        <div id="success_message"></div>
+        <div class="form_box">
+          <h1 id="title">Đăng Nhập</h1>
+          <form action="" method="post" id="register-form">
+            <div class="input_group">
+              <div class="input_field" id="name_field">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Name" id="name">
+              </div>
+              <div class="input_field">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="Password" id="password">
+              </div>    
+              <div class="input_field">
+                <input type="submit" text="Đăng nhập" id="submit" >
+              </div>
+              <p class="b">Bạn quên mật khẩu ? <a href="#">bấm vào đây</a></p>
+              <p class="b">Chưa có tài khoản <a href="/assets/html/register.html">Đăng ký</a></p>
             </div>
-            <div id="login" class="status">
-                <button class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
-            </div>
-            <div id="login" class="status active">
-                <button class="login-btn" type="submit"><a href="/assets/html/profile_hs.html"><i class="fa-solid fa-user"></i> Profile </a></button>
-            </div>
-        </header>
-    <div class="wrapper">
-            <div class="form-box login">
-                <h2>Đăng nhập</h2>
-                <form onsubmit="login()">
-                    <div class="input-box">
-                        <span class="icon"><i class="fa-regular fa-user"></i></span>
-                        <input id="idUser" type="User" required>
-                        <label>Tên đăng nhập</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
-                        <input id="idPassword" type="password" required>
-                        <label>Mật khẩu</label>
-                    </div>
-                    <div class="btn-login" id="idBtnLogin">
-                        <button type="submit" class="btn">Đăng nhập</button>
-                    </div>
-                </form>
-            </div>
-    </div>
-    <script src="/assets/scripts/login.js"></script>
-    <script src="/assets/scripts/slider-login.js"></script>
-    <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
+          </form>
+        </div>
+      </div>
+<script>
+    
+</script>      
 </body>
 </html>
