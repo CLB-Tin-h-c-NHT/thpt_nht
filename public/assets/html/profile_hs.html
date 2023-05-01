@@ -12,11 +12,11 @@
     <header>
         <div id="nav">
             <ul class="nav-main">
-                <li><a href="/index.html"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                <li><a href="/home"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
                 <li>
                     <a href="#"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
                     <ul class="sub-nav">
-                        <li><a href="/assets/html/TKB/tkb10.html">Lớp 10</a></li>
+                        <li><a href="/tkb/class10">Lớp 10</a></li>
                         <li><a href="">Lớp 11</a></li>
                         <li><a href="">Lớp 12</a></li>
                     </ul>
@@ -27,10 +27,10 @@
                         <li><a href="/assets/html/math.html">Geogebra</a></li>
                     </ul>
                 </li>
-                <li><a href="/assets/html/chat.html">
+                <li><a href="/chat">
                     <i class="fa-solid fa-message"></i> Thảo luận</a>
                 </li>
-                <li><a href="/assets/html/leaderboard.html"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+                <li><a href="/bxh"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
                         </ul>
         </div>
     </header>
@@ -39,13 +39,19 @@
         <h2 id="nameID">Phạm Thanh Sang</h2>
         <div class="class" id="classID">Lớp 10A</div>
         <div class="ranking" id="rankID"><a href="">Hạng: 1</a></div>
-        <form onsubmit="Logout()">
-            <div id="logout" >
-                <button type="submit" class="btnLogout">Đăng xuất</button>
-            </div>
-        </form>
+        <div id="logout" >
+            <button onclick="logout()" type="submit" class="btnLogout">Đăng xuất</button>
+        </div>
     </div>
-    <script src="/assets/scripts/profile.js"></script>
     <script src="/assets/scripts/login.js"></script>
+    <script>
+        function delete_cookie(name) {
+            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }       
+        function logout(){
+            delete_cookie('token')
+            window.location.href = '/home'
+        }
+    </script>
 </body>
 </html>

@@ -253,6 +253,7 @@ footer > a{
     border-radius: 20px;
 }
 
-.status.active{
+
+.login-btn.active{
     display: none;
 }

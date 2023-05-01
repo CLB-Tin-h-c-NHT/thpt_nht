@@ -14,16 +14,16 @@
     <div id="success_message"></div>
     <div class="form_box">
       <h1 id="title">Đăng kí</h1>
-      <form action="" method="post" id="register-form">
+      <form method="post" id="register-form">
         <div class="input_group">
 
           <div class="input_field" id="name_field">
             <i class="fa-solid fa-user"></i>
-            <input type="text" placeholder="Name" id="name">
+            <input type="text" placeholder="Name" id="name" name="name">
           </div>
           <div class="input_field">
             <i class="fa-solid fa-lock"></i>
-            <input type="password" placeholder="Password" id="password">
+            <input type="password" placeholder="Password" id="password" name="password">
           </div>
           <div class="input_field">
             <i class="fa-solid fa-user-tie"></i>
@@ -42,29 +42,29 @@
     </div>
   </div>
 <script>
-  const form = document.getElementById("register-form");
-const successMessage = document.getElementById("success_message");
+//   const form = document.getElementById("register-form");
+// const successMessage = document.getElementById("success_message");
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); // ngăn chặn trang được tải lại khi nhấn nút Gửi
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault(); // ngăn chặn trang được tải lại khi nhấn nút Gửi
 
-  // kiểm tra dữ liệu nhập vào
-  const name = document.getElementById("name").value;
-  const password = document.getElementById("password").value;
+//   // kiểm tra dữ liệu nhập vào
+//   const name = document.getElementById("name").value;
+//   const password = document.getElementById("password").value;
 
-  if (!name ||!password) {
-    alert("Vui lòng nhập đầy đủ thông tin!");
-    return;
-  }
-  /* đẩy vào data base 
-  duy code chỗ này nè
-  */
-  // hiển thị thông báo thành công và chuyển hướng về trang chủ
-  alert('Đăng ký thành công !')
-  setTimeout(() => {
-    window.location.href = "home.html";
-  }, 500);
-});
+//   if (!name ||!password) {
+//     alert("Vui lòng nhập đầy đủ thông tin!");
+//     return;
+//   }
+//   /* đẩy vào data base 
+//   duy code chỗ này nè
+//   */
+//   // hiển thị thông báo thành công và chuyển hướng về trang chủ
+//   alert('Đăng ký thành công !')
+//   setTimeout(() => {
+//     window.location.href = "/home";
+//   }, 500);
+// });
 </script>
 </body>
 </html>

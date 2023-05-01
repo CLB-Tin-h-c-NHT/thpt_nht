@@ -4,6 +4,7 @@ const port = 3000
 var router = express.Router()
 app.use(express.static('public'))
 
+
 router.get('/home', (req, res, next) =>{
     res.sendFile('/index.html', {root: __dirname})
 })
@@ -16,7 +17,7 @@ router.get('/chat', (req, res, next) =>{
     res.sendFile('public/assets/html/chat.html', {root: __dirname})
 })
 
-router.get('/bxh', (req, res, next) =>{
+router.get('/bxh', (req, res, next) =>{ 
     res.sendFile('public/assets/html/leaderboard.html', {root: __dirname})
 })
 
