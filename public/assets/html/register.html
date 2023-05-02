@@ -33,11 +33,20 @@
               <option value="student">Học sinh</option>
             </select>
           </div>    
+          <div class="input_field" id="class_field">
+            <i class="fa-solid fa-users-class"></i>
+            <input type="text" placeholder="Lớp học" id="class">
+          </div>
+          <div class="input_field">
+            <input type="submit" text="Gửi" id="submit" >
+          </div>      
+          <div class="choice">
+            <p >Đã có tài khoản? <a href="signin.html">Đăng nhập</a></p>
+          </div>
           <div class="input_field">
             <input type="submit" text="Gửi" id="submit">
           </div>      
         </div>
-        <p >Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
       </form>
     </div>
   </div>
@@ -48,23 +57,27 @@
 // form.addEventListener("submit", (event) => {
 //   event.preventDefault(); // ngăn chặn trang được tải lại khi nhấn nút Gửi
 
-//   // kiểm tra dữ liệu nhập vào
-//   const name = document.getElementById("name").value;
-//   const password = document.getElementById("password").value;
+ // kiểm tra dữ liệu nhập vào
+ //const name = document.getElementById("name").value;
+ //const password = document.getElementById("password").value;
+ //const clas = document.getElementById("class").value;
+  /*
+  if (!name || !password || !clas) {
+  alert("Vui lòng nhập đầy đủ thông tin!");
+  return;
+}
 
-//   if (!name ||!password) {
-//     alert("Vui lòng nhập đầy đủ thông tin!");
-//     return;
-//   }
-//   /* đẩy vào data base 
-//   duy code chỗ này nè
-//   */
-//   // hiển thị thông báo thành công và chuyển hướng về trang chủ
-//   alert('Đăng ký thành công !')
-//   setTimeout(() => {
-//     window.location.href = "/home";
-//   }, 500);
-// });
+  /* đẩy vào data base 
+  duy code chỗ này nè
+  */
+  // hiển thị thông báo thành công và chuyển hướng về trang chủ
+  /*
+  alert('Đăng ký thành công !')
+  setTimeout(() => {
+    window.location.href = "home.html";
+  }, 500);
+  });
+  */  
 </script>
 </body>
 </html>
