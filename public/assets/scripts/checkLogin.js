@@ -21,12 +21,9 @@ function getCookie(cname) {
   }
 const btnLogin = document.querySelectorAll('.login-btn')
 const profile = document.getElementById("profile")
-console.log(getCookie('token'))
 if (getCookie('token')){
     btnLogin[0].classList.add('active')
     btnLogin[1].classList.remove('active')
-    var newUrl = "/profile/"+getCookie('token')
-    profile.href = newUrl
 } else {
     btnLogin[0].classList.remove('active')
     btnLogin[1].classList.add('active')

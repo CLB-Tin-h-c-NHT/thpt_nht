@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    Trường: <input type="text" class="school">
+    Lớp: <input type="text" class="class">
+    <h1>Buổi sáng</h1>
+    <h3>T2</h3> <input type="text" class="t2_sang"><input type="text" class="t2_sang"><input type="text" class="t2_sang"><input type="text" class="t2_sang"><input type="text" class="t2_sang">
+    <h3>T3</h3> <input type="text" class="t3_sang"><input type="text" class="t3_sang"><input type="text" class="t3_sang"><input type="text" class="t3_sang"><input type="text" class="t3_sang">
+    <h3>T4</h3> <input type="text" class="t4_sang"><input type="text" class="t4_sang"><input type="text" class="t4_sang"><input type="text" class="t4_sang"><input type="text" class="t4_sang">
+    <h3>T5</h3> <input type="text" class="t5_sang"><input type="text" class="t5_sang"><input type="text" class="t5_sang"><input type="text" class="t5_sang"><input type="text" class="t5_sang">
+    <h3>T6</h3> <input type="text" class="t6_sang"><input type="text" class="t6_sang"><input type="text" class="t6_sang"><input type="text" class="t6_sang"><input type="text" class="t6_sang">
+    <h3>T7</h3> <input type="text" class="t7_sang"><input type="text" class="t7_sang"><input type="text" class="t7_sang"><input type="text" class="t7_sang"><input type="text" class="t7_sang">
+
+    <h1>Buổi Chiều</h1>
+    <h3>T2</h3> <input type="text" class="t2_chieu"><input type="text" class="t2_chieu"><input type="text" class="t2_chieu"><input type="text" class="t2_chieu"><input type="text" class="t2_chieu">
+    <h3>T3</h3> <input type="text" class="t3_chieu"><input type="text" class="t3_chieu"><input type="text" class="t3_chieu"><input type="text" class="t3_chieu"><input type="text" class="t3_chieu">
+    <h3>T4</h3> <input type="text" class="t4_chieu"><input type="text" class="t4_chieu"><input type="text" class="t4_chieu"><input type="text" class="t4_chieu"><input type="text" class="t4_chieu">
+    <h3>T5</h3> <input type="text" class="t5_chieu"><input type="text" class="t5_chieu"><input type="text" class="t5_chieu"><input type="text" class="t5_chieu"><input type="text" class="t5_chieu">
+    <h3>T6</h3> <input type="text" class="t6_chieu"><input type="text" class="t6_chieu"><input type="text" class="t6_chieu"><input type="text" class="t6_chieu"><input type="text" class="t6_chieu">
+    <h3>T7</h3> <input type="text" class="t7_chieu"><input type="text" class="t7_chieu"><input type="text" class="t7_chieu"><input type="text" class="t7_chieu"><input type="text" class="t7_chieu">
+    <input type="submit" onclick="Update()">
+    <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
+    <script>
+        function getData(t){
+            T = []
+            $(`input[type="text"].${t}`).each(function(){
+                T.push($(this).val())
+            })
+            return T
+        }
+        function Update(){
+            T2_S = getData('t2_sang')
+            T3_S = getData('t3_sang')
+            T4_S = getData('t4_sang')
+            T5_S = getData('t5_sang')
+            T6_S = getData('t6_sang')
+            T7_S = getData('t7_sang')
+
+            T2_C = getData('t2_chieu')
+            T3_C = getData('t3_chieu')
+            T4_C = getData('t4_chieu')
+            T5_C = getData('t5_chieu')
+            T6_C = getData('t6_chieu')
+            T7_C = getData('t7_chieu')
+            console.log(T2_S)
+            $.ajax({
+                url: "/add/tkb",
+                type: "POST",
+                data: {
+                    School: $('.school').val(),
+                    Class: $('.class').val(),
+                    T2_Sang: JSON.stringify(T2_S),
+                    T3_Sang: JSON.stringify(T3_S),
+                    T4_Sang: JSON.stringify(T4_S),
+                    T5_Sang: JSON.stringify(T5_S),
+                    T6_Sang: JSON.stringify(T6_S),
+                    T7_Sang: JSON.stringify(T7_S),
+                    T2_Chieu: JSON.stringify(T2_C),
+                    T3_Chieu: JSON.stringify(T3_C),
+                    T4_Chieu: JSON.stringify(T4_C),
+                    T5_Chieu: JSON.stringify(T5_C),
+                    T6_Chieu: JSON.stringify(T6_C),
+                    T7_Chieu: JSON.stringify(T7_C)
+                }
+            })
+            .then(data=>{
+                if (data === "Đã tồn tại") {
+                    alert('TKB lớp này đã tồn tại')
+                } else {
+                    alert("Tạo thành công")
+                    window.location.reload()
+                }
+                })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
+    </script>
+</body>
+</html>

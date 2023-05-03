@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/style-leader.css">
+    <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
     <title>Bảng xếp hạng</title>
 </head>
 <body>
@@ -43,26 +44,42 @@
     <section id="leader-main">
         <div class="leader-t">
             <table id="leader-table">
-                <thead class="heading-table">
+                <thead id="heading-table">
                     <th>Hạng</th>
                     <th>Họ và tên</th>
+                    <th>Trường</th>
                     <th>Lớp</th>
-                    <th>Điểm TB</th>
+                    <th>Điểm</th>
                 </thead>
-                <tbody class = "body-table">
-                    <tr>
-                        <td>1</td>
-                        <td>Phạm Thanh Sang</td>
-                        <td>10A4</td>
-                        <td>9.2</td>
-                    </tr>
-                    
+                <tbody id = "body-table">
+                
                 </tbody>
             </table>
         </div>
     </section>
     <script src="/assets/scripts/checkLogin.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
+    <script>
+        $.ajax({
+            url: '/data/userScore',
+            type: "GET"
+        })
+        .then(data=>{
+            for (let index = 0; index < data.length; index++) {
+                const element = data[index];
+                var item = $(`
+                    <tr>
+                        <td>${index+1}</td>
+                        <td>${element.username}</td>
+                        <td>${element.school}</td>
+                        <td>${element.Class}</td>
+                        <td>${element.score}</td>
+                    </tr>
+                `)
+                $("#body-table").append(item)
 
+            }
+        })
+    </script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 header{
     background-color: transparent;
+    backdrop-filter: blur(20px);
     border-bottom: 5px solid #162938;
 }
 
@@ -29,6 +30,7 @@ header a{
 }
 
 #leader-main .leader-t{
+    margin: 75px 0;
     width: 100%;
     display: flex;
     position: relative;
@@ -37,22 +39,22 @@ header a{
 }
 
 #leader-main{
-    height: 100vh;
+    min-height: 650px;
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
-    background: url('/assets/img/bng-leader.webp') top center / cover no-repeat;
+    background: url('/assets/img/bng-leader.webp') top center / cover;
     text-align: center;
 }
 
 .leader-t::before{
-    content: "BXH Học kì 1" ;
+    content: "Bảng Xếp Hạng" ;
     color: #162938;
     font-weight: 1000;
     font-size: 36px;
     position: absolute;
-    top: 10%;
+    top: 25px;
 }
 
 .leader-t #leader-table{

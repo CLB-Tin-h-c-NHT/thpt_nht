@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đăng ký</title>
   <link rel="stylesheet" href="/assets/css/style-login.css">
+  <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
   <script src="https://kit.fontawesome.com/5f842d0b87.js" crossorigin="anonymous"></script>  
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
 </head>
@@ -24,57 +25,64 @@
           <div class="input_field">
             <i class="fa-solid fa-lock"></i>
             <input type="password" placeholder="Password" id="password" name="password">
-          </div>
-          <div class="input_field">
-            <i class="fa-solid fa-user-tie"></i>
-            <select id="role" name="role">
-              <option disabled selected>Chọn chức vụ</option>
-              <option value="teacher">Giáo viên</option>
-              <option value="student">Học sinh</option>
-            </select>
           </div>    
           <div class="input_field" id="class_field">
             <i class="fa-solid fa-users-class"></i>
-            <input type="text" placeholder="Lớp học" id="class">
+            <input type="text" placeholder="Trường" id="class">
+            <i class="fa-solid fa-users-class"></i>
+            <input type="text" placeholder="Lớp" id="class">
           </div>
           <div class="input_field">
             <input type="submit" text="Gửi" id="submit" >
           </div>      
           <div class="choice">
-            <p >Đã có tài khoản? <a href="signin.html">Đăng nhập</a></p>
+            <p >Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
           </div>    
         </div>
       </form>
     </div>
   </div>
 <script>
-//   const form = document.getElementById("register-form");
-// const successMessage = document.getElementById("success_message");
-
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault(); // ngăn chặn trang được tải lại khi nhấn nút Gửi
-
- // kiểm tra dữ liệu nhập vào
- //const name = document.getElementById("name").value;
- //const password = document.getElementById("password").value;
- //const clas = document.getElementById("class").value;
-  /*
-  if (!name || !password || !clas) {
-  alert("Vui lòng nhập đầy đủ thông tin!");
-  return;
-}
-
-  /* đẩy vào data base 
-  duy code chỗ này nè
-  */
-  // hiển thị thông báo thành công và chuyển hướng về trang chủ
-  /*
-  alert('Đăng ký thành công !')
-  setTimeout(() => {
-    window.location.href = "home.html";
-  }, 500);
-  });
-  */  
+  function update(data){
+    var url = "/edit/"+data._id
+    console.log(url)
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: {
+        username: data.username,
+        role: data.role,
+        school: "",
+        Class: ""
+      }
+    })
+    .then(data=>{
+      window.location.href = '/login'
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  }
+  function register(){
+      $.ajax({
+        url: "/register",
+        type: "POST",
+        data:{
+          username: $('#name').val(),
+          password: $('#password').val(),
+          role: $('#role').val()
+        }
+      })
+      .then(data=>{
+        if (data === 'Username da ton tai') alert("Username đã tồn tại")
+        else {
+          update(data)
+        }
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    }
 </script>
 </body>
 </html>

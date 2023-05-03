@@ -11,8 +11,12 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
 
+app.get('/', (req, res, next) =>{
+  res.redirect('/home')
+})
+
 app.post('/register', (req, res, next)=>{
-  var name = req.body.name
+  var name = req.body.username
   var password = req.body.password
   var role = req.body.role
   accountModel.findOne({
@@ -30,7 +34,7 @@ app.post('/register', (req, res, next)=>{
     }
   })
   .then(data=> {
-    res.json('Tao tai khoan thanh cong')
+    return res.json(data)
   })
   .catch(err=>{
     res.status(500).json('Tao tai khoan that bai')
@@ -60,23 +64,25 @@ app.post('/login', (req, res, next) =>{
   })
 })
 
-app.get('/profile/:token', (req, res, next)=>{
+app.get('/profile', (req, res, next)=>{
   try{
     var token = req.cookies.token
-    console.log(token)
     var answer = jwt.verify(token, 'it_nht')
     if (answer){
       next()
     }
   } catch (error){
-    return res.json("Ban can phai dang nhap")
+    return res.redirect('/login')
   }
 }, (req, res, next)=>{
   res.sendFile('public/assets/html/profile_hs.html', {root: __dirname})
 })
 
+app.use('/data', require('./routes/getLeaderBorad'))
+app.use('/data', require('./routes/getTKB'))
+app.use('/add/tkb', require('./routes/updateTKB'))
 app.use('/', require('./routerNav.js'))
-app.use('/api/account/', require('./routes/account.js'))
+app.use('/edit', require('./routes/info'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port port`)
