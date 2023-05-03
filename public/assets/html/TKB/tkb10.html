@@ -35,604 +35,24 @@
             <button class="login-btn" type="submit"><a href="/assets/html/profile_hs.html"><i class="fa-solid fa-user"></i> Profile </a></button>
         </div>
     </header>
-    <script src="/assets/scripts/login.js"></script>
     <div class="container">
-        <div class="btn-tkb">
-            <button class="class-btn active">10A1</button>
-            <button class="class-btn">10A2</button>
-            <button class="class-btn">10A3</button>
-            <button class="class-btn">10A4</button>
-            <button class="class-btn">10A16</button>
+        <div class="input_field">
+            <h3>Trường</h3>
+            <input type="text" placeholder="VD: THPT Nguyễn Hữu Thọ" id="school">
+            <h3>Lớp</h3>
+            <input type="text" placeholder="VD: Lớp 10A4" id="Class">
+            
+          </div>
+          <div class="input_field">
+            <input onclick="getData()" type="submit" text="Đăng nhập" id="submit" >
         </div>
         <div class="tkb10 tkb-tb">
             <table class="cls-tblTKB">
-                <thead>
-                    <tr>
-                        <td width="30"><b>Buổi</b></td>
-                        <td width="30"><b>Tiết</b></td>
-                        <td width="120"><b>Thứ 2</b></td>
-                        <td width="120"><b>Thứ 3</b></td>
-                        <td width="120"><b>Thứ 4</b></td>
-                        <td width="120"><b>Thứ 5</b></td>
-                        <td width="120"><b>Thứ 6</b></td>
-                        <td width="120"><b>Thứ 7</b></td>
-                    </tr>
+                <thead id="table__heading">
+                    
                 </thead>
-                <tbody>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Sáng</b></td>
-                        <td width="30" ><b>1</b></td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>2</b></td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>3</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Tiếng Anh</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>4</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>5</b></td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                    </tr>
-                    <tr>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                    </tr>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Chiều</b></td>
-                        <td width="30"><b>1</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>2</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>3</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>4</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>5</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">GDQP4</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="cls-tblTKB">
-                <thead>
-                    <tr>
-                        <td width="30"><b>Buổi</b></td>
-                        <td width="30"><b>Tiết</b></td>
-                        <td width="120"><b>Thứ 2</b></td>
-                        <td width="120"><b>Thứ 3</b></td>
-                        <td width="120"><b>Thứ 4</b></td>
-                        <td width="120"><b>Thứ 5</b></td>
-                        <td width="120"><b>Thứ 6</b></td>
-                        <td width="120"><b>Thứ 7</b></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Sáng</b></td>
-                        <td width="30" ><b>1</b></td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>2</b></td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>3</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Tiếng Anh</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>4</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>5</b></td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                    </tr>
-                    <tr>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                    </tr>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Chiều</b></td>
-                        <td width="30"><b>1</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>2</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>3</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>4</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>5</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">GDQP4</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="cls-tblTKB">
-                <thead>
-                    <tr>
-                        <td width="30"><b>Buổi</b></td>
-                        <td width="30"><b>Tiết</b></td>
-                        <td width="120"><b>Thứ 2</b></td>
-                        <td width="120"><b>Thứ 3</b></td>
-                        <td width="120"><b>Thứ 4</b></td>
-                        <td width="120"><b>Thứ 5</b></td>
-                        <td width="120"><b>Thứ 6</b></td>
-                        <td width="120"><b>Thứ 7</b></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Sáng</b></td>
-                        <td width="30" ><b>1</b></td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>2</b></td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>3</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Tiếng Anh</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>4</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>5</b></td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                    </tr>
-                    <tr>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                    </tr>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Chiều</b></td>
-                        <td width="30"><b>1</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>2</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>3</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>4</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>5</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">GDQP4</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="cls-tblTKB">
-                <thead>
-                    <tr>
-                        <td width="30"><b>Buổi</b></td>
-                        <td width="30"><b>Tiết</b></td>
-                        <td width="120"><b>Thứ 2</b></td>
-                        <td width="120"><b>Thứ 3</b></td>
-                        <td width="120"><b>Thứ 4</b></td>
-                        <td width="120"><b>Thứ 5</b></td>
-                        <td width="120"><b>Thứ 6</b></td>
-                        <td width="120"><b>Thứ 7</b></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Sáng</b></td>
-                        <td width="30" ><b>1</b></td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>2</b></td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>3</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Tiếng Anh</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>4</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>5</b></td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                    </tr>
-                    <tr>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                    </tr>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Chiều</b></td>
-                        <td width="30"><b>1</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>2</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>3</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>4</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>5</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">GDQP4</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="cls-tblTKB">
-                <thead>
-                    <tr>
-                        <td width="30"><b>Buổi</b></td>
-                        <td width="30"><b>Tiết</b></td>
-                        <td width="120"><b>Thứ 2</b></td>
-                        <td width="120"><b>Thứ 3</b></td>
-                        <td width="120"><b>Thứ 4</b></td>
-                        <td width="120"><b>Thứ 5</b></td>
-                        <td width="120"><b>Thứ 6</b></td>
-                        <td width="120"><b>Thứ 7</b></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Sáng</b></td>
-                        <td width="30" ><b>1</b></td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Địa lí 7</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>2</b></td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Sinh 15</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Hóa</td>
-                        <td width="120">Tin học 2</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>3</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Tiếng Anh</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">Sử 7</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>4</b></td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Ngữ văn 1</td>
-                        <td width="120">Toán 10</td>
-                        <td width="120">Tin học 2</td>
-                        <td width="120">SHCN</td>
-                        <td width="120">Toán 10</td>
-                    </tr>
-                    <tr>
-                        <td width="30" ><b>5</b></td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">&nbsp;</td>
-                        <td width="120"size="2">Tiếng Anh</td>
-                    </tr>
-                    <tr>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                        <td width="120"size="2" class = "line"></td>
-                    </tr>
-                    <tr>
-                        <td width="50" rowspan="5"><b>Chiều</b></td>
-                        <td width="30"><b>1</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>2</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>3</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>4</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">Thể dục3</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="30"><b>5</b></td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">GDQP4</td>
-                        <td width="120">&nbsp;</td>
-                        <td width="120">&nbsp;</td>
-                    </tr>
+                <tbody id="table__body">
+                    
                 </tbody>
             </table>
         </div>
@@ -641,5 +61,106 @@
     <script src="/assets/scripts/checkLogin.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
     <script src="/assets/scripts/tkb.js"></script>
+    <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
+    <script>
+        function createItem(index, t2, t3, t4, t5, t6, t7){
+            var item = $(`
+                    <tr>
+                        <td width="30" ><b>${index}</b></td>
+                        <td width="120">${t2}</td>   
+                        <td width="120">${t3}</td>
+                        <td width="120">${t4}</td>
+                        <td width="120">${t5}</td>
+                        <td width="120">${t6}</td>
+                        <td width="120">${t7}</td>
+                    </tr>
+            `)
+            return item
+        }
+
+        function show(data){
+            console.log(data)
+            console.log(data.Chieu.T2.t1)
+            $('#table__heading').html("")
+            $('#table__body').html("")
+            $('#table__heading').append($(`
+                <tr>
+                    <td width="30"><b>Buổi</b></td>
+                    <td width="30"><b>Tiết</b></td>
+                    <td width="120"><b>Thứ 2</b></td>
+                    <td width="120"><b>Thứ 3</b></td>
+                    <td width="120"><b>Thứ 4</b></td>
+                    <td width="120"><b>Thứ 5</b></td>
+                    <td width="120"><b>Thứ 6</b></td>
+                    <td width="120"><b>Thứ 7</b></td>
+                </tr>
+            `))
+
+            $('#table__body').append($(`
+                <tr>
+                    <td width="50" rowspan="5"><b>Sáng</b></td>
+                    <td width="30" ><b>1</b></td>
+                    <td width="120">${data.Sang.T2.t1}</td>
+                    <td width="120">${data.Sang.T3.t1}</td>
+                    <td width="120">${data.Sang.T4.t1}</td>
+                    <td width="120">${data.Sang.T5.t1}</td>
+                    <td width="120">${data.Sang.T6.t1}</td>
+                    <td width="120">${data.Sang.T7.t1}</td>
+                </tr>
+            `))
+            $('#table__body').append(createItem(2, data.Sang.T2.t2, data.Sang.T3.t2, data.Sang.T4.t2, data.Sang.T5.t2, data.Sang.T6.t2, data.Sang.T7.t2))
+            $('#table__body').append(createItem(3, data.Sang.T2.t3, data.Sang.T3.t3, data.Sang.T4.t3, data.Sang.T5.t3, data.Sang.T6.t3, data.Sang.T7.t3))
+            $('#table__body').append(createItem(4, data.Sang.T2.t4, data.Sang.T3.t4, data.Sang.T4.t4, data.Sang.T5.t4, data.Sang.T6.t4, data.Sang.T7.t4))
+            $('#table__body').append(createItem(5, data.Sang.T2.t5, data.Sang.T3.t5, data.Sang.T4.t5, data.Sang.T5.t5, data.Sang.T6.t5, data.Sang.T7.t5))
+            
+            $('#table__body').append($(`
+                <tr>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                </tr>
+            `))
+
+            $('#table__body').append($(`
+                <tr>
+                    <td width="50" rowspan="5"><b>Chiều</b></td>
+                    <td width="30" ><b>1</b></td>
+                    <td width="120">${data.Chieu.T2.t1}</td>
+                    <td width="120">${data.Chieu.T3.t1}</td>
+                    <td width="120">${data.Chieu.T4.t1}</td>
+                    <td width="120">${data.Chieu.T5.t1}</td>
+                    <td width="120">${data.Chieu.T6.t1}</td>
+                    <td width="120">${data.Chieu.T7.t1}</td>
+                </tr>
+            `))
+            $('#table__body').append(createItem(2, data.Chieu.T2.t2, data.Chieu.T3.t2, data.Chieu.T4.t2, data.Chieu.T5.t2, data.Chieu.T6.t2, data.Chieu.T7.t2))
+            $('#table__body').append(createItem(3, data.Chieu.T2.t3, data.Chieu.T3.t3, data.Chieu.T4.t3, data.Chieu.T5.t3, data.Chieu.T6.t3, data.Chieu.T7.t3))
+            $('#table__body').append(createItem(4, data.Chieu.T2.t4, data.Chieu.T3.t4, data.Chieu.T4.t4, data.Chieu.T5.t4, data.Chieu.T6.t4, data.Chieu.T7.t4))
+            $('#table__body').append(createItem(5, data.Chieu.T2.t5, data.Chieu.T3.t5, data.Chieu.T4.t5, data.Chieu.T5.t5, data.Chieu.T6.t5, data.Chieu.T7.t5))
+
+        }
+
+        function getData(){
+            $.ajax({
+                url: "/data/TKB",
+                type: "POST",
+                data:{
+                    school: $('#school').val(),
+                    class: $('#Class').val()  
+                }
+            })
+            .then (data=>{
+                show(data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
+    </script>
 </body>
 </html>

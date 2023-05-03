@@ -28,4 +28,8 @@ router.get('/login', (req, res, next) =>{
 router.get('/register', (req, res, next) =>{
     res.sendFile('public/assets/html/register.html', {root: __dirname})
 })
+
+router.get('/add/tkb', (req, res, next)=>{
+    res.sendFile('public/assets/html/TKB/input_tkb.html', {root: __dirname})
+})
 module.exports = router

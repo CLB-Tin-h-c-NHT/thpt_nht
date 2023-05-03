@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đăng ký</title>
   <link rel="stylesheet" href="/assets/css/style-login.css">
+  <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
   <script src="https://kit.fontawesome.com/5f842d0b87.js" crossorigin="anonymous"></script>  
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
 </head>
@@ -14,7 +15,7 @@
     <div id="success_message"></div>
     <div class="form_box">
       <h1 id="title">Đăng kí</h1>
-      <form method="post" id="register-form">
+      <div id="register-form">
         <div class="input_group">
 
           <div class="input_field" id="name_field">
@@ -34,37 +35,54 @@
             </select>
           </div>    
           <div class="input_field">
-            <input type="submit" text="Gửi" id="submit">
+            <input onclick="register()" type="submit" text="Gửi" id="submit">
           </div>      
         </div>
         <p >Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
-      </form>
+      </div>
     </div>
   </div>
 <script>
-//   const form = document.getElementById("register-form");
-// const successMessage = document.getElementById("success_message");
-
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault(); // ngăn chặn trang được tải lại khi nhấn nút Gửi
-
-//   // kiểm tra dữ liệu nhập vào
-//   const name = document.getElementById("name").value;
-//   const password = document.getElementById("password").value;
-
-//   if (!name ||!password) {
-//     alert("Vui lòng nhập đầy đủ thông tin!");
-//     return;
-//   }
-//   /* đẩy vào data base 
-//   duy code chỗ này nè
-//   */
-//   // hiển thị thông báo thành công và chuyển hướng về trang chủ
-//   alert('Đăng ký thành công !')
-//   setTimeout(() => {
-//     window.location.href = "/home";
-//   }, 500);
-// });
+  function update(data){
+    var url = "/edit/"+data._id
+    console.log(url)
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: {
+        username: data.username,
+        role: data.role,
+        school: "",
+        Class: ""
+      }
+    })
+    .then(data=>{
+      window.location.href = '/login'
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  }
+  function register(){
+      $.ajax({
+        url: "/register",
+        type: "POST",
+        data:{
+          username: $('#name').val(),
+          password: $('#password').val(),
+          role: $('#role').val()
+        }
+      })
+      .then(data=>{
+        if (data === 'Username da ton tai') alert("Username đã tồn tại")
+        else {
+          update(data)
+        }
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    }
 </script>
 </body>
 </html>
