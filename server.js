@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const jwt = require('jsonwebtoken')
 const accountModel = require('./models/account')
+
 var cookieParser = require('cookie-parser')
 app.use(express.static('public'))
 app.use(cookieParser())

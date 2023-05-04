@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1/IT_NHT');
+mongoose.connect("mongodb+srv://Sang:sangpham@cluster0.erqnjbj.mongodb.net/IT_NHT?retryWrites=true&w=majority")
 
 const Schema = mongoose.Schema;
 const infoSchema = new Schema({
