@@ -25,20 +25,20 @@
           <div class="input_field">
             <i class="fa-solid fa-lock"></i>
             <input type="password" placeholder="Password" id="password" name="password">
-          </div>
-          <div class="input_field">
-            <i class="fa-solid fa-user-tie"></i>
-            <select id="role" name="role">
-              <option disabled selected>Chọn chức vụ</option>
-              <option value="teacher">Giáo viên</option>
-              <option value="student">Học sinh</option>
-            </select>
           </div>    
+          <div class="input_field" id="class_field">
+            <i class="fa-solid fa-users-class"></i>
+            <input type="text" placeholder="Trường" id="school">
+            <i class="fa-solid fa-users-class"></i>
+            <input type="text" placeholder="Lớp" id="class">
+          </div>   
           <div class="input_field">
             <input onclick="register()" type="submit" text="Gửi" id="submit">
           </div>      
+          <div class="choice">
+            <p >Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
+          </div>    
         </div>
-        <p >Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
       </div>
     </div>
   </div>
@@ -52,8 +52,8 @@
       data: {
         username: data.username,
         role: data.role,
-        school: "",
-        Class: ""
+        school: $('#school').val(),
+        Class: $('#class').val()
       }
     })
     .then(data=>{
@@ -70,7 +70,8 @@
         data:{
           username: $('#name').val(),
           password: $('#password').val(),
-          role: $('#role').val()
+          role: "Student"
+          
         }
       })
       .then(data=>{

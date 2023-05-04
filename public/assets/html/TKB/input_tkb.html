@@ -11,9 +11,10 @@
         }
     </style>
 </head>
-<body>
+<body id="body">
     Trường: <input type="text" class="school">
     Lớp: <input type="text" class="class">
+    <input type="submit" onclick="check()" text="Check">
     <h1>Buổi sáng</h1>
     <h3>T2</h3> <input type="text" class="t2_sang"><input type="text" class="t2_sang"><input type="text" class="t2_sang"><input type="text" class="t2_sang"><input type="text" class="t2_sang">
     <h3>T3</h3> <input type="text" class="t3_sang"><input type="text" class="t3_sang"><input type="text" class="t3_sang"><input type="text" class="t3_sang"><input type="text" class="t3_sang">
@@ -29,9 +30,21 @@
     <h3>T5</h3> <input type="text" class="t5_chieu"><input type="text" class="t5_chieu"><input type="text" class="t5_chieu"><input type="text" class="t5_chieu"><input type="text" class="t5_chieu">
     <h3>T6</h3> <input type="text" class="t6_chieu"><input type="text" class="t6_chieu"><input type="text" class="t6_chieu"><input type="text" class="t6_chieu"><input type="text" class="t6_chieu">
     <h3>T7</h3> <input type="text" class="t7_chieu"><input type="text" class="t7_chieu"><input type="text" class="t7_chieu"><input type="text" class="t7_chieu"><input type="text" class="t7_chieu">
-    <input type="submit" onclick="Update()">
+    <input type="submit" onclick="addNew()">
     <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
     <script>
+        $.ajax({
+            url: '/edit',
+            type: "GET"
+        })
+        .then(data=>{
+            if (data.role === "Student"){
+                $("#body").html("<h1>Bạn không đủ quyền try cập</h1>")
+            } 
+        })
+        .catch(err=>{
+            console.log(err)
+        })
         function getData(t){
             T = []
             $(`input[type="text"].${t}`).each(function(){
@@ -39,7 +52,50 @@
             })
             return T
         }
-        function Update(){
+
+        function updateVal(t, t1, t2, t3, t4, t5){
+            T = [t1, t2, t3, t4, t5]
+            index = 0
+            $(`input[type="text"].${t}`).each(function(){
+                $(this).val(T[index++])
+            })
+        }
+        function check(){
+            if (!$('.school').val()) return alert("Vui lòng nhập tên trường")
+            if (!$('.class').val()) return alert("Vui lòng nhập lớp")
+            $.ajax({
+                url: "/data/TKB",
+                type: "POST",
+                data: {
+                    school: $('.school').val(),
+                    class: $('.class').val()
+                }
+            })
+            .then(data=>{
+                console.log(data)
+                if (data === "NOT FOUND"){
+                    alert("Thông tin hợp lệ")
+                } else {
+                    updateVal("t2_sang", data.Sang.T2.t1, data.Sang.T2.t2, data.Sang.T2.t3, data.Sang.T2.t4, data.Sang.T2.t5)
+                    updateVal("t3_sang", data.Sang.T3.t1, data.Sang.T3.t2, data.Sang.T3.t3, data.Sang.T3.t4, data.Sang.T3.t5)
+                    updateVal("t4_sang", data.Sang.T4.t1, data.Sang.T4.t2, data.Sang.T4.t3, data.Sang.T4.t4, data.Sang.T4.t5)
+                    updateVal("t5_sang", data.Sang.T5.t1, data.Sang.T5.t2, data.Sang.T5.t3, data.Sang.T5.t4, data.Sang.T5.t5)
+                    updateVal("t6_sang", data.Sang.T6.t1, data.Sang.T6.t2, data.Sang.T6.t3, data.Sang.T6.t4, data.Sang.T6.t5)
+                    updateVal("t7_sang", data.Sang.T7.t1, data.Sang.T7.t2, data.Sang.T7.t3, data.Sang.T7.t4, data.Sang.T7.t5)
+                    
+                    updateVal("t2_chieu", data.Chieu.T2.t1, data.Chieu.T2.t2, data.Chieu.T2.t3, data.Chieu.T2.t4, data.Chieu.T2.t5)
+                    updateVal("t3_chieu", data.Chieu.T3.t1, data.Chieu.T3.t2, data.Chieu.T3.t3, data.Chieu.T3.t4, data.Chieu.T3.t5)
+                    updateVal("t4_chieu", data.Chieu.T4.t1, data.Chieu.T4.t2, data.Chieu.T4.t3, data.Chieu.T4.t4, data.Chieu.T4.t5)
+                    updateVal("t5_chieu", data.Chieu.T5.t1, data.Chieu.T5.t2, data.Chieu.T5.t3, data.Chieu.T5.t4, data.Chieu.T5.t5)
+                    updateVal("t6_chieu", data.Chieu.T6.t1, data.Chieu.T6.t2, data.Chieu.T6.t3, data.Chieu.T6.t4, data.Chieu.T6.t5)
+                    updateVal("t7_chieu", data.Chieu.T7.t1, data.Chieu.T7.t2, data.Chieu.T7.t3, data.Chieu.T7.t4, data.Chieu.T7.t5)
+                }
+            })
+        }
+
+        function addNew(){
+            if (!$('.school').val()) return alert("Vui lòng nhập tên trường")
+            if (!$('.class').val()) return alert("Vui lòng nhập lớp")
             T2_S = getData('t2_sang')
             T3_S = getData('t3_sang')
             T4_S = getData('t4_sang')
@@ -53,7 +109,6 @@
             T5_C = getData('t5_chieu')
             T6_C = getData('t6_chieu')
             T7_C = getData('t7_chieu')
-            console.log(T2_S)
             $.ajax({
                 url: "/add/tkb",
                 type: "POST",

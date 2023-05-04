@@ -7,6 +7,19 @@ var TKBModel = require('../models/TKB.js')
 router.post('/', (req, res, next)=>{
     var School = req.body.School
     var Class = req.body.Class
+    TKBModel.findOneAndDelete({
+        School: School,
+        Class: Class
+    })
+    .then(data=>{
+        next()
+    })
+    .catch(err=>{
+        res.status(500).json("Error server")
+    })
+},(req, res, next)=>{
+    var School = req.body.School
+    var Class = req.body.Class
     var T2_Sang = JSON.parse(req.body.T2_Sang)
     var T3_Sang = JSON.parse(req.body.T3_Sang)
     var T4_Sang = JSON.parse(req.body.T4_Sang)
@@ -20,6 +33,7 @@ router.post('/', (req, res, next)=>{
     var T5_Chieu = JSON.parse(req.body.T5_Chieu)
     var T6_Chieu = JSON.parse(req.body.T6_Chieu)
     var T7_Chieu = JSON.parse(req.body.T7_Chieu)
+    
     TKBModel.findOne({Class: Class})
     .then(data=>{
         if (data)
@@ -129,4 +143,10 @@ router.post('/', (req, res, next)=>{
     })
 })
 
+router.delete('/', (req, res, next)=>{
+    var School = req.body.School
+    var Class = req.body.Class
+    
+    
+})
 module.exports = router

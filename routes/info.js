@@ -3,15 +3,15 @@ const router = express.Router()
 var infoModel = require('../models/info.js')
 const jwt = require('jsonwebtoken')
 
-router.get('/:token', (req, res, next)=>{
-    var token = req.params.token
+router.get('/', (req, res, next)=>{
+    var token = req.cookies.token
     var id = jwt.verify(token, 'it_nht')
-    infoModel.find({_id : id})
+    infoModel.findOne({_id : id})
     .then(data=>{
         res.json(data)
     })
     .catch(err=>{
-        res.status(500).json("Loi!")
+        res.status(500).json("Error server!")
     })
 })
 
@@ -30,10 +30,10 @@ router.post('/:id', (req, res, next)=>{
         score: 0
     })
     .then(data=>{
-        res.json("Thành công")
+        res.json("Success")
     })
     .catch(err=>{
-        res.status(500).json("Lỗi server")
+        res.status(500).json("Error server")
     })
 
 })
