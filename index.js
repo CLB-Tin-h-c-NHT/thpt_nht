@@ -86,6 +86,6 @@ app.use('/', require('./routerNav.js'))
 app.use('/edit', require('./routes/info'))
 app.use('/create/quiz', require('./routes/quiz'))
 
-// app.listen(port, () => {
-//   console.log(`Example app listening on port port`)
-// })
+app.listen(3000, () => {
+  console.log(`Example app listening on port`, 3000)
+})
