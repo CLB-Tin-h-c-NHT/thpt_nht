@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style-quiz.css">
+	<script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
+    <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
+	<style>
+		.ans-row{
+			height: 50px;
+		}
+		.container > input{
+			height: 35px;
+			width: 100%;
+			margin: 0 0 15px;
+		}
+		.question .ans-row input{
+			opacity: 1;
+			padding: 12px 25px;
+
+		}
+		h3 input{
+			height: 50px;
+			width: 100%;
+			padding: 12px 25px;
+		}
+	</style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+		<h1> Tạo Trắc Nghiệm</h1>
+		<input type="text" placeholder="Tên bộ trắc nghiệm" id="name">
+		<div class="wrapper-question">
+			<div class="question">
+				<h3>Câu hỏi 1:  <input type="text" placeholder="Tên câu hỏi"></h3>
+				<div class="answers">
+					<div class="ans-row"><input type="text" placeholder="Nhập đáp án A"></div>
+					<div class="ans-row"><input type="text" placeholder="Nhập đáp án B"></div>
+					<div class="ans-row"><input type="text" placeholder="Nhập đáp án C"></div>
+					<div class="ans-row"><input type="text" placeholder="Nhập đáp án D"></div>
+					<div class="ans-row">
+						<select id="correct">
+							<option selected disabled>Chọn đáp án đúng</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+							<option value="D">D</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="footer"><input class="btn" type="submit" value="Thêm" onclick="add()">  <input class="btn" type="submit"></div>
+	</div>
+	
+	<script>
+		var countQuestion = 1
+		function add(){
+			countQuestion++
+			$('.wrapper-question').append(`
+				<div class="question">
+					<h3>Câu hỏi ${countQuestion}:  <input type="text" placeholder="Tên câu hỏi"></h3>
+					<div class="answers">
+						<div class="ans-row"><input type="text" placeholder="Nhập đáp án A"></div>
+						<div class="ans-row"><input type="text" placeholder="Nhập đáp án B"></div>
+						<div class="ans-row"><input type="text" placeholder="Nhập đáp án C"></div>
+						<div class="ans-row"><input type="text" placeholder="Nhập đáp án D"></div>
+						<div class="ans-row">
+							<select id="correct">
+								<option selected disabled>Chọn đáp án đúng</option>
+								<option value="A">A</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+								<option value="D">D</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			`)
+		}
+	</script>
+</body>
+</html>

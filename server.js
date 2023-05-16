@@ -84,6 +84,7 @@ app.use('/data', require('./routes/getTKB'))
 app.use('/add/tkb', require('./routes/updateTKB'))
 app.use('/', require('./routerNav.js'))
 app.use('/edit', require('./routes/info'))
+app.use('/create/quiz', require('./routes/quiz'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port port`)

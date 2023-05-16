@@ -9,8 +9,8 @@ router.get('/home', (req, res, next) =>{
     res.sendFile('/index.html', {root: __dirname})
 })
   
-router.get('/tkb/class10', (req, res, next) =>{
-      res.sendFile('public/assets/html/TKB/tkb10.html', {root: __dirname})
+router.get('/tkb', (req, res, next) =>{
+      res.sendFile('public/assets/html/TKB/tkb.html', {root: __dirname})
 })
 
 router.get('/chat', (req, res, next) =>{
@@ -31,5 +31,13 @@ router.get('/register', (req, res, next) =>{
 
 router.get('/add/tkb', (req, res, next) =>{
     res.sendFile('public/assets/html/TKB/input_tkb.html', {root: __dirname})
+})
+
+router.get('/quiz', (req, res, next)=>{
+    res.sendFile('public/assets/html/quiz.html', {root: __dirname})
+})
+
+router.get('/quiz/create', (req, res, next)=>{
+    res.sendFile('public/assets/html/createQuiz.html', {root: __dirname})
 })
 module.exports = router
