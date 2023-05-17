@@ -71,6 +71,10 @@
     })
   }
   function register(){
+      if (!$('#name').val()) return alert("Vui lòng điền tên")
+      if (!$('#password').val()) return alert("Vui lòng điền mật khẩu")
+      if (!$('#school').val()) return alert("Vui lòng nhập tên trường")
+      if (!$('#class').val()) return alert("Vui lòng nhập lớp")
       $.ajax({
         url: "/register",
         type: "POST",
