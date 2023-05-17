@@ -85,6 +85,7 @@ app.use('/add/tkb', require('./routes/updateTKB'))
 app.use('/', require('./routerNav.js'))
 app.use('/edit', require('./routes/info'))
 app.use('/create/quiz', require('./routes/quiz'))
+app.use('/api', require('./routes/posts'))
 
 app.listen(3000, () => {
   console.log(`Example app listening on port`, 3000)

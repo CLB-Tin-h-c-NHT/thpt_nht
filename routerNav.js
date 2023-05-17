@@ -1,12 +1,37 @@
 const express = require('express')
 const app = express()
-const port = 3000
 var router = express.Router()
 app.use(express.static('public'))
-var TKBModel = require("./models/TKB")
+var accountModel = require('./models/account.js')
+const jwt = require('jsonwebtoken')
 
 router.get('/home', (req, res, next) =>{
-    res.sendFile('/index.html', {root: __dirname})
+    try{
+        var token = req.cookies.token
+        var answer = jwt.verify(token, 'it_nht')
+        if (answer){
+          next()
+        }
+      } catch (error){
+        return res.redirect('/login')
+    }
+}, (req, res, next) =>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    accountModel.findOne({_id : id})
+    .then(data=>{
+        if (data.role === "Student"){
+            res.sendFile('/index.html', {root: __dirname})
+        } else if (data.role === "Teacher"){
+            res.sendFile('public/assets/html/teacher.html', {root: __dirname})
+        } else {
+            res.sendFile('public/assets/html/admin.html', {root: __dirname})
+        }
+    })
+    .catch(err=>{
+        console.log(err)
+        res.status(500).json("Error server!")
+    })
 })
   
 router.get('/tkb', (req, res, next) =>{
@@ -39,5 +64,9 @@ router.get('/quiz', (req, res, next)=>{
 
 router.get('/quiz/create', (req, res, next)=>{
     res.sendFile('public/assets/html/createQuiz.html', {root: __dirname})
+})
+
+router.get('/api/upload/cfs', (req, res, next)=>{
+    res.sendFile('public/assets/html/admin/cfs.html', {root: __dirname})
 })
 module.exports = router

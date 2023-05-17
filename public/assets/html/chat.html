@@ -36,7 +36,7 @@
             <button class="login-btn" type="submit"><a href="/login"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
         </div>
         <div id="login" class="status active">
-            <button class="login-btn" type="submit"><a href="/assets/html/profile_hs.html"><i class="fa-solid fa-user"></i> Profile </a></button>
+            <button class="login-btn" type="submit"><a href="/profile"><i class="fa-solid fa-user"></i> Profile </a></button>
         </div>
     </header>
 
@@ -81,34 +81,6 @@
                     <button type="submit" class="uploadBtn"><a href="https://forms.gle/u4mBb9C2ZsGmFDsW9">Đăng bài</a></button>
                 </div>
                 <h2>Confession</h2>
-                <div class="post">
-                    <p class="tag-cfs">#cfs001</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
-                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
-                    </p>
-                    <p class="tag-cfs">#cfs002</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
-                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
-                    </p>
-                    <p class="tag-cfs">#cfs003</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
-                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
-                    </p>
-                </div>
-                <div class="post">
-                    <p class="tag-cfs">#cfs004</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
-                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
-                    </p>
-                    <p class="tag-cfs">#cfs005</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
-                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
-                    </p>
-                    <p class="tag-cfs">#cfs006</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia quam vel necessitatibus similique reiciendis vero. Maiores 
-                        eveniet doloremque illum ea, aperiam perspiciatis ipsu, ex dolores fugit cum vel tempora!
-                    </p>
-                </div>
             </div>
     
             <div id="other-chat" class="content">
@@ -128,5 +100,58 @@
     <script src="/assets/scripts/checkLogin.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
     <script src="/assets/scripts/chat.js"></script>
+    <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
+    <script>
+        $.ajax({
+            url: 'api/data/cfs',
+            method: "GET"
+        })
+        .then(data=>{
+            console.log(data)
+            showCFS(data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+
+        function showCFS(data){
+            let limit = 3
+            if (data.content.length < limit) limit = data.content.length
+            $("#cfs").append(`
+                <div class="post c1">
+                </div>
+            `)
+            var start = data.count-6
+            if (start < 0) start = 0
+            for (let index = 0; index < limit; index++) {
+                const element = data.content[index];
+                var code = start+index+1;
+                code = code.toString()
+                while (code.length < 3) code = '0'+code
+                $('.post.c1').append(`
+                    <p class="tag-cfs">#cfs${code}</p>
+                    <p>${element.content}
+                    </p>
+                `)
+            }
+            if (data.content.length-3 > 0){
+                $("#cfs").append(`
+                    <div class="post c2">
+                    </div>
+                `)   
+                for (let index = 3; index < data.content.length; index++) {
+                    const element = data.content[index];
+                    var code = start+index+1;
+                    code = code.toString()
+                    while (code.length < 3) code = '0'+code
+                    $('.post.c2').append(`
+                        <p class="tag-cfs">#cfs${code}</p>
+                        <p>${element.content}
+                        </p>
+                    `)
+                }
+            }
+        }
+    </script>
 </body>
 </html>
