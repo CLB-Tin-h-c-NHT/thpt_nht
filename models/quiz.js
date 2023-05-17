@@ -4,10 +4,9 @@ mongoose.connect("mongodb+srv://Sang:sangpham@cluster0.erqnjbj.mongodb.net/IT_NH
 
 const Schema = mongoose.Schema;
 const quizSchema = new Schema({
+  name: String,
   quiz: Array
 }, {
-    name: String,
-    public: Boolean,
     collection: 'quiz'
 });
 

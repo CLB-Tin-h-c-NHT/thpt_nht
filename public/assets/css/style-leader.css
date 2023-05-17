@@ -44,7 +44,7 @@ header a{
     position: relative;
     justify-content: center;
     align-items: center;
-    background: url('/assets/img/bng-leader.webp') top center / cover;
+    background: #917FB3;
     text-align: center;
 }
 

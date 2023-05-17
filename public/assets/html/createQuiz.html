@@ -42,7 +42,7 @@
 		<input type="text" placeholder="Tên bộ trắc nghiệm" id="name">
 		<div class="wrapper-question">
 			<div class="question" id="q1">
-				<h3>Câu hỏi 1:  <input type="text" placeholder="Tên câu hỏi"></h3>
+				<h3>Câu hỏi 1:  <input type="text" id="question1" placeholder="Câu hỏi"></h3>
 				<div class="answers">
 					<div class="ans-row" ><input id="q1a" type="text" placeholder="Nhập đáp án A"></div>
 					<div class="ans-row" ><input id="q1b" type="text" placeholder="Nhập đáp án B"></div>
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 		</div>
-        <div class="footer"><input class="btn" type="submit" value="Thêm" onclick="add()">  <input class="btn" type="submit"></div>
+        <div class="footer"><input class="btn" type="submit" value="Thêm" onclick="add()">  <input onclick="upload()" class="btn" type="submit"></div>
 	</div>
 	
 	<script>
@@ -69,7 +69,7 @@
 			countQuestion++
 			$('.wrapper-question').append(`
 				<div class="question" id = "q${countQuestion}">
-					<h3>Câu hỏi ${countQuestion}:  <input type="text" placeholder="Tên câu hỏi"></h3>
+					<h3>Câu hỏi ${countQuestion}:  <input type="text" id = "question${countQuestion}" placeholder="Câu hỏi"></h3>
 					<div class="answers">
 						<div class="ans-row"><input id = "q${countQuestion}a" type="text" placeholder="Nhập đáp án A"></div>
 						<div class="ans-row"><input id = "q${countQuestion}b" type="text" placeholder="Nhập đáp án B"></div>
@@ -87,6 +87,49 @@
 					</div>
 				</div>
 			`)
+			getQuestion(1)
+		}
+
+		function getQuestion(i){
+			var item = {
+				question: String,
+				A: String,
+				B: String,
+				C: String,
+				D: String,
+				ans: String 
+			}
+			item.question = $(`#question${i}`).val()
+			item.A = $(`#q${i}a`).val()
+			item.B = $(`#q${i}b`).val()
+			item.C = $(`#q${i}c`).val()
+			item.D = $(`#q${i}d`).val()
+			item.ans = $(`#q${i}correct`).val()
+			if (!item.ans) item.ans = 'A'	
+			return item
+		}
+
+		function upload(){
+			var quiz = []
+			for (let index = 1; index <= countQuestion; index++) {
+				var item = getQuestion(index)
+				quiz.push(item)
+			}
+			$.ajax({
+				url: '/api/create/quiz',
+				method: "POST",
+				data:{
+					name: $('#name').val(),
+					quiz: JSON.stringify(quiz)
+				}
+			})
+			.then(data=>{
+				alert("Thành công")
+				location.reload()
+			})
+			.catch(err=>{
+				console.log(err);
+			})
 		}
 	</script>
 </body>

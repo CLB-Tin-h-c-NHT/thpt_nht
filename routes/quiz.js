@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 var quizModel = require('../models/quiz.js')
 
-router.post('/', (req, res, next) =>{
+router.post('/create/quiz', (req, res, next) =>{
     quizModel.findOne({
         name: req.body.name
     })
@@ -20,6 +20,14 @@ router.post('/', (req, res, next) =>{
         name: name,
         quiz: quiz
     })
+    .then(data=>{
+        res.json("Thành công")
+    })
+    .catch(err=>{
+        res.status(500).json("Error server")
+    })
 })
+
+
 
 module.exports = router

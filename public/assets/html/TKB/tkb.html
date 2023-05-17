@@ -81,8 +81,6 @@
         }   
 
         function show(data){
-            console.log(data)
-            console.log(data.Chieu.T2.t1)
             $('#table__heading').html("")
             $('#table__body').html("")
             $('#table__heading').append($(`
@@ -157,7 +155,8 @@
                 }
             })
             .then (data=>{
-                show(data)
+                if (data === "NOT FOUND") alert("Không tìm thấy")
+                else show(data)
             })
             .catch(err=>{
                 console.log(err)

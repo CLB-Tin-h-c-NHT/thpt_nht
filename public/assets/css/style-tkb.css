@@ -11,6 +11,7 @@ body{
 header{
     background-color: transparent;
     border-bottom: 5px solid #162938;
+    backdrop-filter: blur(20px);
 }
 
 header a{
