@@ -23,12 +23,13 @@
 			width: 100%;
 			margin: 0 0 15px;
 		}
-		.question .ans-row input{
+		.question .ans-row textarea{
+			width: 100%;
 			opacity: 1;
 			padding: 12px 25px;
 
 		}
-		h3 input{
+		h3 textarea{
 			height: 50px;
 			width: 100%;
 			padding: 12px 25px;
@@ -42,12 +43,12 @@
 		<input type="text" placeholder="Tên bộ trắc nghiệm" id="name">
 		<div class="wrapper-question">
 			<div class="question" id="q1">
-				<h3>Câu hỏi 1:  <input type="text" id="question1" placeholder="Câu hỏi"></h3>
+				<h3>Câu hỏi 1: <textarea name="" id="question1" placeholder = "Câu hỏi"></textarea></h3>
 				<div class="answers">
-					<div class="ans-row" ><input id="q1a" type="text" placeholder="Nhập đáp án A"></div>
-					<div class="ans-row" ><input id="q1b" type="text" placeholder="Nhập đáp án B"></div>
-					<div class="ans-row" ><input id="q1c" type="text" placeholder="Nhập đáp án C"></div>
-					<div class="ans-row" ><input id="q1d" type="text" placeholder="Nhập đáp án D"></div>
+					<div class="ans-row" ><textarea id="q1a" type="text" placeholder="Nhập đáp án A"></textarea></div>
+					<div class="ans-row" ><textarea id="q1b" type="text" placeholder="Nhập đáp án B"></textarea></div>
+					<div class="ans-row" ><textarea id="q1c" type="text" placeholder="Nhập đáp án C"></textarea></div>
+					<div class="ans-row" ><textarea id="q1d" type="text" placeholder="Nhập đáp án D"></textarea></div>
 					<div class="ans-row">
 						<select id="q1correct">
 							<option selected disabled>Chọn đáp án đúng</option>
@@ -69,12 +70,12 @@
 			countQuestion++
 			$('.wrapper-question').append(`
 				<div class="question" id = "q${countQuestion}">
-					<h3>Câu hỏi ${countQuestion}:  <input type="text" id = "question${countQuestion}" placeholder="Câu hỏi"></h3>
+					<h3>Câu hỏi ${countQuestion}:  <textarea type="text" id = "question${countQuestion}" placeholder="Câu hỏi"></textarea></h3>
 					<div class="answers">
-						<div class="ans-row"><input id = "q${countQuestion}a" type="text" placeholder="Nhập đáp án A"></div>
-						<div class="ans-row"><input id = "q${countQuestion}b" type="text" placeholder="Nhập đáp án B"></div>
-						<div class="ans-row"><input id = "q${countQuestion}c" type="text" placeholder="Nhập đáp án C"></div>
-						<div class="ans-row"><input id = "q${countQuestion}d" type="text" placeholder="Nhập đáp án D"></div>
+						<div class="ans-row"><textarea id = "q${countQuestion}a" type="text" placeholder="Nhập đáp án A"></textarea></div>
+						<div class="ans-row"><textarea id = "q${countQuestion}b" type="text" placeholder="Nhập đáp án B"></textarea></div>
+						<div class="ans-row"><textarea id = "q${countQuestion}c" type="text" placeholder="Nhập đáp án C"></textarea></div>
+						<div class="ans-row"><textarea id = "q${countQuestion}d" type="text" placeholder="Nhập đáp án D"></textarea></div>
 						<div class="ans-row">
 							<select id="q${countQuestion}correct">
 								<option selected disabled>Chọn đáp án đúng</option>
