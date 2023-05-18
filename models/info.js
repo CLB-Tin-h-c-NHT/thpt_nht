@@ -8,6 +8,7 @@ const infoSchema = new Schema({
   role: String, 
   school: String, 
   Class: String,
+  Quiz: Array,
   score: Number
 }, {
     collection: 'info'

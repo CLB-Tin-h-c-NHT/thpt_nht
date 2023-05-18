@@ -27,6 +27,7 @@ router.post('/:id', (req, res, next)=>{
         role: role,
         school: school,
         Class: Class,
+        Quiz: [],
         score: 0
     })
     .then(data=>{
@@ -38,27 +39,44 @@ router.post('/:id', (req, res, next)=>{
 
 })
 
-router.put('/:token', (req, res, next)=>{
+router.put('/point/:id', (req, res, next)=>{
+    var token = req.cookies.token
     var id = jwt.verify(token, 'it_nht')
-    var school = req.body.school
-    var Class = req.body.Class
-    var username = req.body.username
-    if (school){
-        infoModel.findByIdAndUpdate(id, {
-            school: school
+    var idQuiz = req.params.id
+    infoModel.findOne({_id : id})
+    .then(data=>{
+        for (let index = 0; index < data.Quiz.length; index++) {
+            const element = data.Quiz[index];
+            if (idQuiz == element) return res.json("No update")
+        }
+        next()
+    })
+    .catch(err=>{
+        return res.status(500).json("Error server!")
+    })
+
+}, (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    var idQuiz = req.params.id
+    infoModel.findOne({_id : id})
+    .then(data=>{
+        var Quiz = data.Quiz
+        Quiz.push(idQuiz)
+        return infoModel.findByIdAndUpdate(id, {
+            score: data.score+req.body.point,
+            Quiz: Quiz
         })
-    }
-    if (Class){
-        infoModel.findByIdAndUpdate(id, {
-            Class: Class
+        .then(data=>{
+            res.json("Updated")
         })
-    }
-    if (username){
-        infoModel.findByIdAndUpdate(id, {
-            username: username
+        .catch(err=>{
+            res.status(500).json("Error server!")
         })
-    }
-    res.json("Thanh cong")
+    })
+    .catch(err=>{
+        res.status(500).json("Error server!")
+    })
 })
 
 router.delete('/:token', (req, res, next)=>{})

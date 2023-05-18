@@ -59,7 +59,7 @@ router.get('/add/tkb', (req, res, next) =>{
 })
 
 router.get('/quiz', (req, res, next)=>{
-    res.sendFile('public/assets/html/quiz.html', {root: __dirname})
+    res.sendFile('public/assets/html/menuQuiz.html', {root: __dirname})
 })
 
 router.get('/quiz/create', (req, res, next)=>{
@@ -68,5 +68,9 @@ router.get('/quiz/create', (req, res, next)=>{
 
 router.get('/api/upload/cfs', (req, res, next)=>{
     res.sendFile('public/assets/html/admin/cfs.html', {root: __dirname})
+})
+
+router.get('/quiz/:id', (req, res, next)=>{
+    res.sendFile('public/assets/html/quiz.html', {root: __dirname})
 })
 module.exports = router

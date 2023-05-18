@@ -12,30 +12,98 @@
     <meta property="og:url" content="https://thpt-nht.onrender.com">
     <meta property="og:locale" content="vi_VN">
     <link rel="stylesheet" href="/assets/css/style-quiz.css">
+	<script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
+    <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
     <title>Document</title>
 </head>
 <body>
     <div class="container">
-		<h1>Trắc Nghiệm</h1>
-		<div class="question">
-			<h3>Câu hỏi 1: Ngôn ngữ lập trình nào mạnh nhất</h3>
-			<div class="answers">
-				<div class="ans-row"><input type="radio" name="q1" value="a"><span>C++</span></div>
-				<div class="ans-row"><input type="radio" name="q1" value="b"><span>HTML</span></div>
-				<div class="ans-row"><input type="radio" name="q1" value="c"><span>Java</span></div>
-				<div class="ans-row"><input type="radio" name="q1" value="c"><span>Python</span></div>
-			</div>
-		</div>
-		<div class="question">
-			<h3>Câu hỏi 2: Học ngôn ngữ gì để code giỏi?</h3>
-			<div class="answers">
-				<div class="ans-row"><input type="radio" name="q2" value="a"><span>C++</span></div>
-				<div class="ans-row"><input type="radio" name="q2" value="b"><span>Tiếng Anh</span></div>
-				<div class="ans-row"><input type="radio" name="q2" value="c"><span>Java</span></div>
-				<div class="ans-row"><input type="radio" name="q2" value="c"><span>Python</span></div>
-			</div>
-		</div>
-        <div class="footer"><input class="btn" type="submit"></div>
 	</div>
+	
+	<script>
+        var hr = location.href
+        var id = ""
+        var i = hr.length-1
+        while (hr[i] !== '/'){
+            id = hr[i]+id
+            i--;
+        }
+        $.ajax({
+            url: '/api/quiz/'+id,
+            method: 'PUT'
+        })
+        .then(data=>{
+            show(data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+
+        function show(data){
+            $('.container').append(`
+		        <h1>${data.name}</h1>
+		        <div class="wrapper-question"></div>
+            `)
+            for (let index = 0; index < data.quiz.length; index++) {
+                const element = data.quiz[index];
+                $('.wrapper-question').append(`
+                    <div class="question" id="q${index+1}">
+                        <h3>${element.question}</h3>
+                        <div class="answers">
+                            <div class="ans-row"><input type="radio" name="q1" value="A"><span>${element.A}</span></div>
+                            <div class="ans-row"><input type="radio" name="q1" value="B"><span>${element.B}</span></div>
+                            <div class="ans-row"><input type="radio" name="q1" value="C"><span>${element.C}</span></div>
+                            <div class="ans-row"><input type="radio" name="q1" value="D"><span>${element.D}</span></div>
+                        </div>
+                    </div>
+                `)
+            }
+            $('.container').append(`
+                <div class="footer"><input onclick="submit()" class="btn" type="submit"></div>
+            `)
+        }
+        let countCorrect = 0
+        let point = 0
+        function submit(){
+            $.ajax({
+                url: '/api/quiz/'+id,
+                method: 'PUT'
+            })
+            .then(data=>{
+                for (let index = 0; index < data.quiz.length; index++) {
+                    const element = data.quiz[index];
+                    var choose = $(`input[name=q${index+1}]:checked`).val()
+                    if (choose === element.ans) countCorrect++
+                }
+                point = 100/data.quiz.length*countCorrect
+                var n = parseFloat(point); point = Math.round(n * 1000)/1000; 
+                $('.container').html("")
+                $('.container').append(`
+                    <h1>${countCorrect}/${data.quiz.length}</h1>
+                    <h1>${point}</h1>
+                `)  
+                $.ajax({
+                url: '/edit/point/'+id,
+                method: "PUT",
+                data: {
+                    point: point
+                }
+                })
+                .then(data=>{
+                    location.href = '/quiz'
+                })
+                .catch(err=>{
+                    console.log(err);
+                })
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+           
+
+            
+        }
+
+	</script>
 </body>
 </html>

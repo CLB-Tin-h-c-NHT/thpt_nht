@@ -28,6 +28,28 @@ router.post('/create/quiz', (req, res, next) =>{
     })
 })
 
+router.put('/quiz', (req, res, next)=>{
+    quizModel.find({})
+    .then (data=>{
+        res.json(data)
+    })
+    .catch(err=>{
+        res.status(500).json("Error server")
+    })
+})
 
+router.put('/quiz/:id', (req, res, next)=>{
+    var id = req.params.id
+    quizModel.findById(
+        {_id : id}
+    )
+    .then (data=>{
+        res.json(data)
+    })
+    .catch (err=>{
+        console.log(err)
+        res.status(500).json("Error server")
+    })
+})
 
 module.exports = router
