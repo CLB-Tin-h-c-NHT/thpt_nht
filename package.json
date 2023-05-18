@@ -22,6 +22,7 @@
     "express": "^4.18.2",
     "jquery": "^3.6.4",
     "jsonwebtoken": "^9.0.0",
+    "mathjax-full": "^3.2.2",
     "mongoose": "^7.1.0",
     "nodemon": "^2.0.22",
     "php-express": "^0.0.3"
