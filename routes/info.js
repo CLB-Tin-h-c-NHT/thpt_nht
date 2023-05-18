@@ -64,7 +64,7 @@ router.put('/point/:id', (req, res, next)=>{
         var Quiz = data.Quiz
         Quiz.push(idQuiz)
         return infoModel.findByIdAndUpdate(id, {
-            score: parseInt(data.score)+parseInt(req.body.point),
+            score: parseInt(data.score) +parseInt(req.body.point),
             Quiz: Quiz
         })
         .then(data=>{
