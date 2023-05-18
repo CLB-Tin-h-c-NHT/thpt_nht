@@ -40,18 +40,6 @@
     <input type="submit" onclick="addNew()">
     <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
     <script>
-        $.ajax({
-            url: '/edit',
-            type: "GET"
-        })
-        .then(data=>{
-            if (data.role === "Student"){
-                $("#body").html("<h1>Bạn không đủ quyền try cập</h1>")
-            } 
-        })
-        .catch(err=>{
-            console.log(err)
-        })
         function getData(t){
             T = []
             $(`input[type="text"].${t}`).each(function(){

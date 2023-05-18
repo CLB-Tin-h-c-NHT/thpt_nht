@@ -55,6 +55,17 @@ router.get('/register', (req, res, next) =>{
 })
 
 router.get('/add/tkb', (req, res, next) =>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    accountModel.findOne({_id : id})
+    .then(data=>{
+        if (data.role === "Student") res.send("<h1>Bạn không đủ quyền try cập</h1>");
+        else next()
+    })
+    .catch(err=>{
+        res.status(500).json("Error server!")
+    })
+},(req, res, next) =>{
     res.sendFile('public/assets/html/TKB/input_tkb.html', {root: __dirname})
 })
 
@@ -63,10 +74,33 @@ router.get('/quiz', (req, res, next)=>{
 })
 
 router.get('/quiz/create', (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    accountModel.findOne({_id : id})
+    .then(data=>{
+        if (data.role === "Student") res.send("<h1>Bạn không đủ quyền try cập</h1>");
+        else next()
+    })
+    .catch(err=>{
+        res.status(500).json("Error server!")
+    })
+},(req, res, next)=>{
     res.sendFile('public/assets/html/createQuiz.html', {root: __dirname})
 })
 
 router.get('/api/upload/cfs', (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    accountModel.findOne({_id : id})
+    .then(data=>{
+        if (data.role === "Student" || data.role === "Teacher") res.send("<h1>Bạn không đủ quyền try cập</h1>");
+        else next()
+    })
+    .catch(err=>{
+        res.status(500).json("Error server!")
+    })
+},(req, res, next)=>{
+
     res.sendFile('public/assets/html/admin/cfs.html', {root: __dirname})
 })
 
