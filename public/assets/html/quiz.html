@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="/assets/css/style-quiz.css">
 	<script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
     <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>       
     <style>
         .item-quiz{
             text-decoration: none;
@@ -34,8 +45,6 @@
         .item-quiz:hover{
             background-color: #87CBB9;
         }
-
-            
     </style>
     <script>
         var hr = location.href
@@ -75,6 +84,13 @@
                         </div>
                     </div>
                 `)
+                setTimeout(function () {
+                    const syncTypeset = document.querySelector(`#q${index+1}`)
+                    setTimeout(function () {
+                        MathJax.typeset()
+                    }, 0)
+                }, 0)
+
             }
             $('.container').append(`
                 <div class="footer"><input onclick="submit()" class="btn" type="submit"></div>
