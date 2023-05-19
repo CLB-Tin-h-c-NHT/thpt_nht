@@ -70,16 +70,20 @@
       console.log(err)
     })
   }
+  
   function register(){
       if (!$('#name').val()) return alert("Vui lòng điền tên")
       if (!$('#password').val()) return alert("Vui lòng điền mật khẩu")
       if (!$('#school').val()) return alert("Vui lòng nhập tên trường")
       if (!$('#class').val()) return alert("Vui lòng nhập lớp")
+      var username = $('#name').val()
+      while (username[0] === ' ') username = username.slice(1)
+      while (username[username.length-1] === ' ') username = username.slice(0, -1) 
       $.ajax({
         url: "/register",
         type: "POST",
         data:{
-          username: $('#name').val(),
+          username: username,
           password: $('#password').val(),
           role: "Student",
           quiz: []

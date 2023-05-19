@@ -65,11 +65,15 @@
     }
 
     function login(){
+      var username = $('#name').val()
+      // Chuẩn hóa xâu tránh lỗi
+      while (username[0] === ' ') username = username.slice(1)
+      while (username[username.length-1] === ' ') username = username.slice(0, -1) 
       $.ajax({
         url: "/login",
         type: "POST",
         data:{
-          username: $('#name').val(),
+          username: username,
           password: $('#password').val()  
         }
       })
