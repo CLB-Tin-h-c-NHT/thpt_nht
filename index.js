@@ -7,6 +7,7 @@ const accountModel = require('./models/account')
 var cookieParser = require('cookie-parser')
 app.use(express.static('public'))
 app.use(cookieParser())
+app.use(express.json())
 
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended : false}))
@@ -86,7 +87,9 @@ app.use('/', require('./routerNav.js'))
 app.use('/edit', require('./routes/info'))
 app.use('/api', require('./routes/quiz'))
 app.use('/api', require('./routes/posts'))
+app.use('/api', require('./models/chatGPT'))
+
 
 app.listen(3000, () => {
   console.log(`Example app listening on port`, 3000)
-})
+}) 

@@ -107,4 +107,9 @@ router.get('/api/upload/cfs', (req, res, next)=>{
 router.get('/quiz/:id', (req, res, next)=>{
     res.sendFile('public/assets/html/quiz.html', {root: __dirname})
 })
+
+router.get('/chatAI', (req, res, next)=>{
+    res.sendFile('public/assets/html/chatGPT.html', {root: __dirname})
+})
+
 module.exports = router

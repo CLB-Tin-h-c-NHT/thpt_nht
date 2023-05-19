@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/style-chatAI.css">
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
+    <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
+    <title>Chat AI</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Hỏi bài AI</h2>
+        <p>Chức năng này hoạt động dựa trên API chatGPT của OpenAI <br>
+            Có thể sẽ mất khá nhiều thời gian để AI xử lý kết quả tùy vào câu hỏi của bạn
+        </p>
+        <div class="chat_input">
+            <textarea id="prompt" placeholder="Nhập câu hỏi"></textarea> <button onclick="postQuestion()" type="submit">Gửi</button>
+        </div>
+        <div class="chat">
+        </div>
+    </div>
+    <script>
+        function postQuestion(){
+            $.ajax({
+                url: '/api/chatGPT',
+                method: 'POST',
+                data:{
+                    prompt: $('#prompt').val()
+                }
+            })
+            .then(data=>{
+                $('.chat').html(`${data.message}`)
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+        }
+    </script>
+</body>
+</html>

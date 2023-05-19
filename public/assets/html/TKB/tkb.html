@@ -83,6 +83,18 @@
         function show(data){
             $('#table__heading').html("")
             $('#table__body').html("")
+            $('#table__body').append($(`
+                <tr>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                    <td width="120"size="2" class = "line"></td>
+                </tr>
+            `))
             $('#table__heading').append($(`
                 <tr>
                     <td width="30"><b>Buổi</b></td>
