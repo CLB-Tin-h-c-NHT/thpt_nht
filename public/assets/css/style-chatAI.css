@@ -9,9 +9,20 @@
 
 body{
     width: 100%;
-    min-height: 550px;
+    background-color: #343541;
     display: flex;
     justify-content: center;
+}
+
+
+header{
+    background: #202123;
+    backdrop-filter: blur(20px);
+}
+
+.nav-main li:hover > a{
+    background-color: #343541;
+    color: #fff;
 }
 
 .container{
@@ -22,10 +33,12 @@ body{
 }
 
 .container h2{
+    color: #fff;
     text-transform: uppercase;
 }
 
 .container p{
+    color: #fff;
     margin: 15px 0;
     font-weight: 500;
 }
@@ -38,9 +51,9 @@ body{
 }
 
 .chat_input textarea{
+    padding: 12px 0 12px 16px;
     width: 80%;
     height: 100%;
-    padding: 12px 25px;
     border: none;
     overflow: auto;
     outline: none;
@@ -49,7 +62,8 @@ body{
     box-shadow: none;
     resize: none;
     border-radius: 15px;
-    background-color: #C4DFDF;
+    background-color: #40414F;
+    color: #ECECF1;
 }
 
 textarea:focus, input:focus{
@@ -78,7 +92,38 @@ textarea:focus, input:focus{
     text-align: justify;
     font-size: 1rem;
     font-weight: 400;
-    background-color: #ACBCFF;
+    background-color: #FFFFFF0D;
     border-radius: 15px;
     transition: all .5s ease-out;
 }
+
+/* loading  */
+.continuous-4 {
+    width: 80%;
+    height: 25px;
+    margin: auto;
+    border-radius: 40px;
+    color: #514b82;
+    border: 2px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .continuous-4::before {
+    content: "";
+    position: absolute;
+    margin: 2px;
+    width: 14px;
+    top: 0;
+    bottom: 0;
+    left: -20px;
+    border-radius: inherit;
+    background: currentColor;
+    box-shadow: -10px 0 12px 3px currentColor;
+    clip-path: polygon(0 5%, 100% 0,100% 100%,0 95%,-30px 50%);
+    animation: loading 1.5s infinite linear;
+  }
+  
+  @keyframes loading {
+    100% {left: calc(100% + 20px)}
+  }

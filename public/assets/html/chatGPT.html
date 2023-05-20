@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
+    <meta property = "og:image" content="https://thpt-nht.onrender.com/assets/img/bng-school/bng4.jpg">
+    <meta property = "og:type" content="website">
+    <meta property = "og:image:alt" content="Lỗi ảnh">
+    <meta property = "og:title" content="IT NHT <3">
+    <meta property = "og:description" content="Trang web do nhóm IT NHT tạo ra">
+    <meta property="og:url" content="https://thpt-nht.onrender.com">
+    <meta property="og:locale" content="vi_VN">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/style-chatAI.css">
     <script>
         MathJax = {
@@ -21,6 +29,29 @@
     <title>Chat AI</title>
 </head>
 <body>
+    <header>
+        <div id="nav">
+            <ul class="nav-main">
+                <li><a href="/home"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                <li>
+                    <a href="/tkb"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
+                </li>
+                <li>
+                    <a href="/quiz"><i class="fa-solid fa-book"></i> Bài tập</a>
+                </li>
+                <li><a href="/chat">
+                    <i class="fa-solid fa-message"></i> Thảo luận</a>
+                </li>
+                <li><a href="/bxh"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+            </ul>
+        </div>
+        <div id="login" class="status">
+            <button class="login-btn" type="submit"><a href="/login"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
+        </div>
+        <div id="login" class="status active">
+            <button class="login-btn" type="submit"><a href="/profile"><i class="fa-solid fa-user"></i> Profile </a></button>
+        </div>
+    </header>
     <div class="container">
         <h2>Hỏi bài AI</h2>
         <p>Chức năng này hoạt động dựa trên API chatGPT của OpenAI <br>
@@ -29,11 +60,13 @@
         <div class="chat_input">
             <textarea id="prompt" placeholder="Nhập câu hỏi"></textarea> <button onclick="postQuestion()" type="submit">Gửi</button>
         </div>
-        <div class="chat">
-        </div>
+        <div class="chat"></div>
+
     </div>
+    <script src="/assets/scripts/checkLogin.js"></script>
     <script>
         function postQuestion(){
+            $('.chat').html("</div><div class='continuous-4'></div>")
             $.ajax({
                 url: '/api/chatGPT',
                 method: 'POST',
@@ -42,10 +75,16 @@
                 }
             })
             .then(data=>{
-                $('.chat').html(`${data.message}`)
+                $('.chat').html(`<p>${data.message}</p>`)
+                setTimeout(function () {
+                    const syncTypeset = document.querySelector('.chat')
+                    setTimeout(function () {
+                        MathJax.typeset()
+                    }, 0)
+                }, 0)
             })
             .catch(err=>{
-                console.log(err);
+                $('.chat').html(`<p>Đã có lỗi xảy ra</p>`)
             })
         }
     </script>
