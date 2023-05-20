@@ -8,28 +8,28 @@
 }
 
 header{
-    background-color: transparent;
-    border-bottom: 5px solid #162938;
+    background-color: #394867;
+    border-bottom: 5px solid #DBDFEA;
     backdrop-filter: blur(20px);
 }
 
 header a{
-    color: #162938;
+    color: #DBDFEA;
 }
 
 #nav .sub-nav{
     background-color: transparent;
-    border: 2px solid #162938;
+    border: 2px solid #DBDFEA;
     backdrop-filter: blur(20px);
 }
 
 .nav-main li:hover > a{
-    background-color: #162938;
-    color: #fff;
+    background-color: #DBDFEA;
+    color: #394867;
 }
 
 body{
-    background: #19A7CE;
+    background: #8294C4;
     min-height: 100vh;
 }
 
@@ -49,7 +49,7 @@ body{
     background: transparent;
     padding: 30px;
     backdrop-filter: blur(20px);
-
+    background-color: #ACB1D6;
 }
 
 .tab-box{
@@ -57,7 +57,7 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 2px solid #162938;
+    border-bottom: 2px solid #394867;
 }
 
 .tab-box .tab-btn{
@@ -66,14 +66,14 @@ body{
     border: none;
     font-size: 18px;
     font-weight: 600;
-    color: #162938;
+    color: #394867;
     padding: 10px;
     cursor: pointer;
 }
 
 .tab-box .tab-btn.active{
-    color: #B25068;
-    border-bottom: 3px solid #fff;
+    color: #F1F6F9;
+    border-bottom: 3px solid #F1F6F9;
     transition: .5s ease;
 }
 
@@ -99,9 +99,10 @@ body{
 .post{
     margin-top: 50px;
     width: 600px;
-    border: 2px solid #fff;
+    border: 2px solid #DBDFEA;
     border-radius: 20px;
     padding: 12px 24px;
+    color: #212A3E;
 }
 
 .post img{
@@ -111,7 +112,7 @@ body{
 
 .tag-cfs{
     font-weight: 500;
-    color: #fff;
+    color: #F1F6F9;
     margin: 5px 0;
 }
 
@@ -120,7 +121,7 @@ body{
     height: 50px;
     position: absolute;
     background: transparent;
-    border: 2px dashed #162938;
+    border: 2px dashed #394867;
     border-radius: 20px;
     right: 100px;
 }
@@ -128,5 +129,5 @@ body{
 .uploadBtn a{
     font-weight: 500;
     font-size: 1rem;
-    color: #0A4D68;
+    color: #394867;
 }
