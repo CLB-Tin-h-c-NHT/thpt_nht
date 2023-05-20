@@ -49,12 +49,15 @@ router.put('/point/:id', (req, res, next)=>{
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
+    var hours = dateObj.getHours();
+    var minutes = dateObj.getMinutes()
+    var seconds = dateObj.getSeconds()
     infoModel.findOne({_id : id})
     .then(data=>{
         historyModel.create({
             username: data.username,
             QuizID: idQuiz,
-            time: day+'/'+month+'/'+year,
+            time: day+'/'+month+'/'+year + ' - ' + hours + ':' + minutes + ':' + seconds,
             score: req.body.point
         })
         .then(data=>{})
