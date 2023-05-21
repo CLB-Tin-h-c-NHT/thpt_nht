@@ -8,13 +8,14 @@
 
 /* Phần đầu trang */
 :root{
-    --color-heading: #088395;
+    --color-heading: #27374D;
 }
 
 header{
     height: 60px;
     display: inline-block;
     background-color: var(--color-heading);
+    border-bottom: 5px solid #E3F4F4;
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 10;
@@ -81,15 +82,16 @@ header{
     transition: .5s;
 }
 .nav-main li:hover > a{
-    background-color: #ccc;
+    background-color: #E3F4F4;
+    color: var(--color-heading);
 }
 
     
 #login .login-btn:hover{
-    background-color: #fff;
+    background-color: #E3F4F4;
 }
 #login .login-btn:hover a{
-    color: #162938;
+    color: var(--color-heading);
 }
 
 a{
@@ -129,6 +131,7 @@ a{
     border-radius: 6%;
     color: #162938;
     backdrop-filter: blur(20px);
+    padding-top: 10px;
 }
 
 #content h3{
@@ -149,8 +152,9 @@ a{
     border: 5px solid #fff;
     margin: 10px 10px;
     border-radius: 6%;
-    color: #162938;
     backdrop-filter: blur(20px);
+    padding-top: 10px;
+    font-weight: 400;
 }
 
 
@@ -203,6 +207,7 @@ footer > a{
 /* slider */
 .slider-bng{
     max-width: 100%;
+    position: relative;
     margin-top: 60px auto 0;
     background: url('/assets/img/bng-chat.jpg') top center / cover no-repeat;
     position: relative;
@@ -211,7 +216,6 @@ footer > a{
 
 .slider{
     max-width: 1000px;
-    position: relative;
     padding-top: 15px;
     margin: 60px auto 0;
 }
@@ -260,3 +264,113 @@ footer > a{
 .login-btn.active{
     display: none;
 }
+
+
+/* Reponsive */
+
+.nav_bars-btn{
+    display: none;
+    line-height: 60px;
+    margin: 0 0 5px 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    color: #E3F4F4;
+    cursor: pointer;
+}
+
+.nav_overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .3);
+    display: none;
+    cursor: pointer;
+}
+
+.nav_moblie{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    transform: translateX(-100%);
+    background-color: #fff;
+    transition: all .5s ease-out;
+}
+
+.icon-xmark{
+    font-size: 1.7rem;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.nav_moblie .nav_moblie-list{
+    margin-top: 24px;
+}
+
+.nav_moblie a{
+    color: #27374D;
+    display: block;
+    padding: 8px 24px;
+}
+
+#nav_active{
+    display: none;
+}
+
+#nav_active:checked ~ .nav_moblie{
+    transform: translateX(0);
+}
+
+#nav_active:checked ~ .nav_overlay{
+    display: block;
+}
+
+@media (max-width: 1023px){
+    .nav-main{
+        display: none;
+    }
+
+    .nav_bars-btn {
+        display: block;
+    }
+    /*Reponsive slider  */
+    .slider-bng{
+        width: 100%;
+        height: 400px;
+        display: flex;
+        align-items: center;
+    }
+
+    .slider-wrapper{
+        width: 80%;
+        margin: auto;
+    }
+
+    .slider-item{
+        margin: auto;
+        height: 50%;
+    }
+
+    .slider-bng h3{
+        text-align: center;
+        width: 100%;
+        z-index: 1;
+        bottom: 5px;
+    }
+
+    #content .introduce .box-intro{
+        width: 90%;
+        margin: auto;
+    }
+
+    #content .introduce .box-useful{
+        display: none;
+    }
+}   
