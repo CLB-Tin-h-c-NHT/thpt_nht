@@ -53,6 +53,7 @@ body{
     display: block;
     width: 95%;
     height: 50px;
+    min-height: 50px;
     padding: 12px 25px;
     background-color: #A4D0A4;
     color: #FFF8D6;
@@ -63,4 +64,10 @@ body{
 
 .item-quiz:hover{
     background-color: #617A55;
+}
+
+@media (max-width: 1023px){
+    .wrapper{
+        width: 90%;
+    }
 }

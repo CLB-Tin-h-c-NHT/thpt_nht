@@ -18,31 +18,58 @@
 <body>
     <header>
         <div id="nav">
-            <ul class="nav-main">
-                <li><a href="/home"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-                <li>
-                    <a href="/tkb"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
-                </li>
-                <li>
-                    <a href="/quiz"><i class="fa-solid fa-book"></i> Bài tập</a>
-                </li>
-                <li><a href="/chat">
-                    <i class="fa-solid fa-message"></i> Thảo luận</a>
-                </li>
-                <li><a href="/bxh"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
-                        </ul>
+            <nav class="nav_pc">
+                <ul class="nav-main">
+                    <li><a href="/home"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li>
+                        <a href="/tkb"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
+                    </li>
+                    <li>
+                        <a href="/quiz"><i class="fa-solid fa-book"></i> Bài tập</a>
+                    </li>
+                    <li><a href="/chat">
+                        <i class="fa-solid fa-message"></i> Thảo luận</a>
+                    </li>
+                    <li><a href="/bxh"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+                </ul>
+            </nav>
+            
+
+            <label for="nav_active" class="nav_bars-btn"><i class="fa-solid fa-bars"></i></label>
+            <input type="checkbox" id="nav_active">
+            <label for="nav_active" class="nav_overlay"></label>
+            <nav class="nav_moblie">
+                <ul class="nav_moblie-list">
+                    <label for="nav_active" class="icon-xmark"><i class="fa-solid fa-xmark"></i></label>
+                    <li><a href="/home"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li>
+                        <a href="/tkb"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
+                    </li>
+                    <li>
+                        <a href="/quiz"><i class="fa-solid fa-book"></i> Bài tập</a>
+                    </li>
+                    <li><a href="/chat">
+                        <i class="fa-solid fa-message"></i> Thảo luận</a>
+                    </li>
+                    <li><a href="/bxh"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
-    <div class="profile">
-        <img src="/assets/img/anhtam.png" alt="">
-        <h2 id="name"></h2>
-        <div id="school">Trường: </div>
-        <div id="class">Lớp: </div>
-        <div id="logout" >
-            <button onclick="logout()" type="submit" class="btnLogout">Đăng xuất</button>
+    <div class="container">
+        <div class="profile">
+            <img src="/assets/img/anhtam.png" alt="">
+            <h2 id="name"></h2>
+            <div id="school">Trường: </div>
+            <div id="class">Lớp: </div>
+            <div id="logout" >
+                <button onclick="logout()" type="submit" class="btnLogout">Đăng xuất</button>
+            </div>
         </div>
     </div>
+    
     <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
+    <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
 <script>
         function updateData(data){
             console.log(data, data.role)
