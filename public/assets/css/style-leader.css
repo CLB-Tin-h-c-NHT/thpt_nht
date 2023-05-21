@@ -1,13 +1,12 @@
 
 
 header{
-    background-color: transparent;
-    backdrop-filter: blur(20px);
-    border-bottom: 5px solid #162938;
+    background-color: #E76161;
+    border-bottom: 5px solid #FFFBCC;
 }
 
 header a{
-    color: #162938;
+    color: #FFFBCC;
 }
 
 #nav .sub-nav{
@@ -17,16 +16,17 @@ header a{
 }
 
 .nav-main li:hover > a{
-    background-color: #162938;
-    color: #fff;
+    background-color: #FFFBCC;
+    color: #E76161;
 }
 
 #login .login-btn{
-    border: 2px solid #162938;
+    border: 2px solid #FFFBCC;
 }
   
 #login .login-btn:hover {
-    background-color: #fff;
+    background-color: #FFFBCC;
+    color: #E76161;
 }
 
 #leader-main .leader-t{
@@ -44,13 +44,13 @@ header a{
     position: relative;
     justify-content: center;
     align-items: center;
-    background: #917FB3;
+    background: #e2ac85;
     text-align: center;
 }
 
 .leader-t::before{
     content: "Bảng Xếp Hạng" ;
-    color: #162938;
+    color: #F5E9CF;
     font-weight: 1000;
     font-size: 36px;
     position: absolute;
@@ -58,10 +58,12 @@ header a{
 }
 
 .leader-t #leader-table{
+    background-color: #F4FAB3;
     height: auto;
-    width: 50%;  
+    width: 70%;  
     font-weight: 500;
-    border: 2px solid #162938;
+    border: 3px solid #E76161;
+    padding: 10px;
     border-radius: 15px;
     margin-top: 10%;
 }   
@@ -70,6 +72,25 @@ tr{
     line-height: 40px;
 }
 
+#leader-table th{
+    color: #E76161;
+}
+
 #body-table td{
-    color: #162938;
+    color: #181823;
+}
+
+.fa-solid.fa-medal.rank1{
+    color: #ddb52f;
+    font-size: 1.5rem;
+}
+
+.fa-solid.fa-medal.rank2{
+    color: #ACB1D6;
+    font-size: 1.3rem;
+}
+
+.fa-solid.fa-medal.rank3{
+    color: #9E6F21;
+    font-size: 1.1rem;
 }

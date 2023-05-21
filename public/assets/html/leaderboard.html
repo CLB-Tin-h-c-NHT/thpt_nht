@@ -70,6 +70,17 @@
                 if (index !== 0){
                     if (element.score !== data[index-1].score) current++;
                 }
+                if (current <= 3){
+                    var item = $(`
+                    <tr>
+                        <td><i class="fa-solid fa-medal rank${current}"></i></td>
+                        <td>${element.username}</td>
+                        <td>${element.school}</td>
+                        <td>${element.Class}</td>
+                        <td>${element.score}</td>
+                    </tr>
+                    `)    
+                } else
                 var item = $(`
                     <tr>
                         <td>${current}</td>
