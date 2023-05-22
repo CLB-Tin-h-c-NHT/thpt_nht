@@ -374,3 +374,25 @@ footer > a{
         display: none;
     }
 }   
+.phone-rotate{
+    display: none;
+}
+
+@media (orientation:portrait) {
+    .phone-rotate{
+        width: 100vw;
+        height: 100vh;
+        display: block;
+        margin: auto;
+        border: none;
+    }
+
+    body{
+        background: #000;
+    }
+
+    .slider-bng, #content, .introduce, header, footer, .container, #leader-main
+    {
+        display: none;
+    }
+}
