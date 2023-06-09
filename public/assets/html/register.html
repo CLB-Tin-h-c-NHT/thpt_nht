@@ -21,16 +21,20 @@
 <body>
   <iframe class="phone-rotate" src="https://embed.lottiefiles.com/animation/45792"></iframe>
   <div class="container">
-    <div id="success_message"></div>
     <div class="form_box">
       <h1 id="title">Đăng kí</h1>
+      <div id="success_message" class="active">Tạo thành công</div>
+      <div id="error_message" class="active"></div>
       <div id="register-form">
         <div class="input_group">
-
           <div class="input_field" id="name_field">
             <i class="fa-solid fa-user"></i>
             <input type="text" placeholder="Name" id="name" name="name">
           </div>
+          <div class="input_field">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email" id="email" name="email">
+          </div>   
           <div class="input_field">
             <i class="fa-solid fa-lock"></i>
             <input type="password" placeholder="Password" id="password" name="password">
@@ -41,6 +45,7 @@
             <i class="fa-solid fa-users-class"></i>
             <input type="text" placeholder="Lớp" id="class">
           </div>   
+          
           <div class="input_field">
             <input onclick="register()" type="submit" text="Gửi" id="submit">
           </div>      
@@ -53,7 +58,7 @@
   </div>
 <script>
   function update(data){
-    var url = "/edit/"+data._id
+    var url = "/data/add/"+data._id
     console.log(url)
     $.ajax({
       url: url,
@@ -62,10 +67,13 @@
         username: data.username,
         role: data.role,
         school: $('#school').val(),
-        Class: $('#class').val()
+        Class: $('#class').val(),
+        email: $('#email').vaL()
       }
     })
     .then(data=>{
+      $("#error_message").addClass('active')
+      $('#success_message').removeClass('active')
       window.location.href = '/login'
     })
     .catch(err=>{
@@ -73,11 +81,19 @@
     })
   }
   
+  function showErr(text){
+    $("#error_message").html("");
+    $("#error_message").append(text)
+    $("#error_message").removeClass('active')
+  }
+
   function register(){
-      if (!$('#name').val()) return alert("Vui lòng điền tên")
-      if (!$('#password').val()) return alert("Vui lòng điền mật khẩu")
-      if (!$('#school').val()) return alert("Vui lòng nhập tên trường")
-      if (!$('#class').val()) return alert("Vui lòng nhập lớp")
+      if (!$('#name').val()) return showErr("Vui lòng điền tên")
+      if (!$('#password').val()) return showErr("Vui lòng điền mật khẩu")
+      if (!$('#school').val()) return showErr("Vui lòng nhập tên trường")
+      if (!$('#class').val()) return showErr("Vui lòng nhập lớp")
+      if (!$('#email').val()) return showErr("Vui lòng nhập lớp")
+
       var username = $('#name').val()
       while (username[0] === ' ') username = username.slice(1)
       while (username[username.length-1] === ' ') username = username.slice(0, -1) 
@@ -88,11 +104,13 @@
           username: username,
           password: $('#password').val(),
           role: "Student",
+          email: $('#email').val(),
           quiz: []
         }
       })
       .then(data=>{
         if (data === 'Username da ton tai') alert("Username đã tồn tại")
+        else if (data === 'Email da ton tai') alert("Username đã tồn tại")
         else {
           update(data)
         }

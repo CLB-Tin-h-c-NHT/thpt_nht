@@ -12,8 +12,9 @@
     <meta property="og:url" content="https://thpt-nht.onrender.com">
     <meta property="og:locale" content="vi_VN">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style-login.css">
     <link rel="stylesheet" href="/assets/css/stylepf.css">
-    <title>profile_hs</title>
+    <title>Thông tin</title>
 </head>
 <body>
     <header>
@@ -56,46 +57,124 @@
             </nav>
         </div>
     </header>
-    <iframe class="phone-rotate" src="https://embed.lottiefiles.com/animation/45792"></iframe>
+    <iframe class="phone-rotate"></iframe>
     <div class="container">
         <div class="profile">
-            <img src="/assets/img/anhtam.png" alt="">
+            <button onclick="showEdit()"><i class="fa-solid fa-pen-to-square icon"></i></button>
+            <div id="avatar_box"></div>
             <h2 id="name"></h2>
             <div id="school">Trường: </div>
             <div id="class">Lớp: </div>
-            <div id="logout" >
+            <div id="score">Điểm: </div>
+            <div id="logout">
                 <button onclick="logout()" type="submit" class="btnLogout">Đăng xuất</button>
             </div>
         </div>
+        <div class="edit__box active">
+            <div id="message">Lưu ý: Chỉ thay đổi họ và tên hiển thị username không thay đổi</div>
+
+            <div id="success_message" class="active">Cập nhật thành công</div>
+            <div id="error_message" class="active"></div>
+            <div class="input_field">
+                <input type="name" placeholder="Họ và tên" id="input_name" name="name">
+            </div>  
+            <div class="input_field">
+                <input type="school" placeholder="Trường" id="input_school" name="school">
+            </div>  
+            <div class="input_field">
+                <input type="class" placeholder="Lớp" id="input_class" name="class">
+            </div>  
+            <div class="input_field">
+                <input type="email" placeholder="Email" id="input_email" name="email">
+            </div>  
+            <a href="https://en.gravatar.com/">Đổi ảnh đại diện của bạn</a>
+            <div id="logout">
+                <button onclick="updateEdit()" type="submit" class="btnLogout">Cập nhật</button>
+            </div>
+        </div>
     </div>
+
     
     <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
 <script>
-        function updateData(data){
-            console.log(data, data.role)
-            $("#name").append(`${data.username}`)
-            $("#school").append(`${data.school}`)
-            $("#class").append(`${data.Class}`)
-        }
+    function showErr(text){
+        $("#error_message").html("");
+        $("#error_message").append(text)
+        $("#error_message").removeClass('active')
+    }
+
+    function showEdit(){
+        $(".profile").addClass('active')
+        $(".edit__box").removeClass('active')
+    }
+    function updateEdit(){
         $.ajax({
-            url: "/edit",
+            url: "/edit/info",
+            method: "PUT",
+            data:{
+                name: $('#input_name').val(),
+                school: $('#input_school').val(),
+                Class: $('#input_class').val(),
+                email: $('#input_email').val(),
+            }
+        })
+        .then(data=>{
+            if (data == "Email đã tồn tại") showErr(data)
+            else if (data == "Server error") showErr("Cập nhật thất bại")
+            else {
+                $("#error_message").addClass('active')
+                $('#success_message').removeClass('active')
+                location.reload()
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
+    function updateData(data){
+        $(document).attr("title", `${data.username}`);
+        $.ajax({
+            url: "/data/avt/"+data.email,
             type: "GET"
         })
         .then(data=>{
-            updateData(data)
+            $("#avatar_box").append(`
+                <img id = "avatar" src="${data}" alt="">
+            `)
         })
         .catch(err=>{
             console.log(err)
         })
+        $("#name").append(`${data.username}`)
+        $("#school").append(`${data.school}`)
+        $("#class").append(`${data.Class}`)
+        $("#score").append(`${data.score}`)
+        $("#input_name").val(`${data.username}`)
+        $("#input_school").val(`${data.school}`)
+        $("#input_class").val(`${data.Class}`)
+        $("#input_email").val(`${data.email}`)
+       
+    }
+    $.ajax({
+        url: "/data/user",
+        type: "GET"
+    })
+    .then(data=>{
+        updateData(data)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
 
-        function delete_cookie(name) {
-            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        }       
-        function logout(){
-            delete_cookie('token')
-            window.location.href = '/home'
-        }
-    </script>
+    function delete_cookie(name) {
+        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }       
+    function logout(){
+        delete_cookie('token')
+        window.location.href = '/home'
+    }
+</script>
 </body>
 </html>

@@ -9,7 +9,8 @@ const infoSchema = new Schema({
   school: String, 
   Class: String,
   Quiz: Array,
-  score: Number
+  score: Number,
+  email: String,
 }, {
     collection: 'info'
 });

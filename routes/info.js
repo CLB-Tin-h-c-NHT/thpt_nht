@@ -5,7 +5,7 @@ var historyModel = require('../models/history.js')
 
 const jwt = require('jsonwebtoken')
 
-router.get('/', (req, res, next)=>{
+router.get('/data/user', (req, res, next)=>{
     var token = req.cookies.token
     var id = jwt.verify(token, 'it_nht')
     infoModel.findOne({_id : id})
@@ -17,7 +17,7 @@ router.get('/', (req, res, next)=>{
     })
 })
 
-router.post('/:id', (req, res, next)=>{
+router.post('/data/add/:id', (req, res, next)=>{
     var id = req.params.id
     var school = req.body.school
     var Class = req.body.Class
@@ -41,7 +41,7 @@ router.post('/:id', (req, res, next)=>{
 
 })
 
-router.put('/point/:id', (req, res, next)=>{
+router.put('/edit/point/:id', (req, res, next)=>{
     var token = req.cookies.token
     var id = jwt.verify(token, 'it_nht')
     var idQuiz = req.params.id
@@ -82,7 +82,7 @@ router.put('/point/:id', (req, res, next)=>{
         var Quiz = data.Quiz
         Quiz.push(idQuiz)
         return infoModel.findByIdAndUpdate(id, {
-            score: parseInt(data.score) +parseInt(req.body.point),
+            score: parseFloat(data.score) +parseFloat(req.body.point),
             Quiz: Quiz
         })
         .then(data=>{
@@ -97,6 +97,81 @@ router.put('/point/:id', (req, res, next)=>{
     })
 })
 
+router.put('/edit/info', (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    var name = req.body.name 
+    if (name == '') next()
+    else {
+        infoModel.findByIdAndUpdate(id, {
+            username: name
+        })
+        .then(data=>{
+            next()
+        })
+        .catch(err=>{
+            res.status(500).json("Server error")
+        })
+    }
+}, (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    var school = req.body.school 
+    if (school == '') next()
+    else {
+        infoModel.findByIdAndUpdate(id, {
+            school: school
+        })
+        .then(data=>{
+            next()
+        })
+        .catch(err=>{
+            res.status(500).json("Server error")
+        })
+    }
+    
+},(req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    var Class = req.body.Class 
+    if (Class == '') next()
+    else {
+        infoModel.findByIdAndUpdate(id, {
+            Class: Class
+        })
+        .then(data=>{
+            next()
+        })
+        .catch(err=>{
+            res.status(500).json("Server error")
+        })
+    }
+    
+}, (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    var email = req.body.email
+    if (email == '') res.json("Updated")
+    else{
+        infoModel.find({
+            email: email
+        })
+        .then(data=>{
+            if (!data) res.json("Email đã tồn tại")
+            else return  infoModel.findByIdAndUpdate(id, {
+                email: email
+            })
+        })
+        .then(data=>{
+            res.json("Updated")
+        })
+        .catch(err=>{
+            res.status(500).json("Server error")
+        })
+    }
+})
+
 router.delete('/:token', (req, res, next)=>{})
+
 
 module.exports = router

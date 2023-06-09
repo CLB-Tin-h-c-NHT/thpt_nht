@@ -8,7 +8,7 @@
  }
  .container{
    width: 100%;
-   height: 100vh;
+   height: 650px;
    background-image:  url(/assets/img/bng-loginM.png);
    background-position: center;
    background-size: cover;
@@ -30,7 +30,7 @@
  }
  .form_box h1{
    font-size: 30px;
-   margin-bottom: 60px;
+   margin-bottom: 30px;
    color: #3c00a0;
    position: relative;
  }
@@ -132,3 +132,21 @@
     background: #3c00a0;
     color: #fff;
  }
+
+#success_message{
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  color: #A7ECEE;
+}
+
+#error_message{
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  color: #B31312;
+}
+
+#success_message.active, #error_message.active{
+  display: none;
+}

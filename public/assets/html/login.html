@@ -21,9 +21,10 @@
 <body>
   <iframe class="phone-rotate" src="https://embed.lottiefiles.com/animation/45792"></iframe>
     <div class="container">
-        <div id="success_message"></div>
         <div class="form_box">
           <h1 id="title">Đăng Nhập</h1>
+          <div id="success_message" class="active">Đăng nhập thành công</div>
+          <div id="error_message" class="active"></div>
           <div  id="register-form">
             <div class="input_group">
               <div class="input_field" id="name_field">
@@ -65,6 +66,11 @@
       }
       return "";
     }
+    function showErr(text){
+      $("#error_message").html("");
+      $("#error_message").append(text)
+      $("#error_message").removeClass('active')
+    }
 
     function login(){
       var username = $('#name').val()
@@ -82,9 +88,13 @@
       .then(data=>{
         if (data.token){
           setCookie('token', data.token, 365)
-          window.location.href = "/profile"
+          $("#error_message").addClass('active')
+          $('#success_message').removeClass('active')
+          setTimeout(()=>{
+            window.location.href = "/profile"
+          }, 2000)
         } else {
-          alert("Tài khoản sai!")
+          showErr("Tài khoản sai!")
         }
       })
       .catch(err=>{

@@ -21,6 +21,8 @@ app.post('/register', (req, res, next)=>{
   var name = req.body.username
   var password = req.body.password
   var role = req.body.role
+  var email = req.body.email
+
   accountModel.findOne({
     username: name
   })
@@ -28,18 +30,45 @@ app.post('/register', (req, res, next)=>{
     if (data) {
       res.json("Username da ton tai")
     } else {
-      return accountModel.create({
-        username: name,
-        password: password,
-        role: role
-      })
+      next()
     }
   })
-  .then(data=> {
-    return res.json(data)
+  .catch(err=>{
+    res.status(500).json("Server error")
+  })
+}, (req, res, next)=>{
+  var name = req.body.username
+  var password = req.body.password
+  var role = req.body.role
+  var email = req.body.email
+  accountModel.findOne({
+    username: name
+  })
+  .then(data=>{
+    if (data) {
+      res.json("Email da ton tai")
+    } else {
+      next()
+    }
   })
   .catch(err=>{
-    res.status(500).json('Tao tai khoan that bai')
+    res.status(500).json("Server error")
+  })
+},(req, res, next)=>{
+  var name = req.body.username
+  var password = req.body.password
+  var role = req.body.role
+  var email = req.body.email
+  accountModel.create({
+    username: name,
+    password: password,
+    role: role,
+  })
+  .then(data=>{
+    res.json("data")
+  })
+  .catch(err=>{
+    res.json('Server error')
   })
 })
 
@@ -84,10 +113,12 @@ app.use('/data', require('./routes/getLeaderBorad'))
 app.use('/data', require('./routes/getTKB'))
 app.use('/add/tkb', require('./routes/updateTKB'))
 app.use('/', require('./routerNav.js'))
-app.use('/edit', require('./routes/info'))
+app.use('/', require('./routes/info'))
+app.use('/', require('./routes/gravatar'))
 app.use('/api', require('./routes/quiz'))
 app.use('/api', require('./routes/posts'))
 app.use('/api', require('./models/chatGPT'))
+
 
 
 app.listen(3000, () => {
