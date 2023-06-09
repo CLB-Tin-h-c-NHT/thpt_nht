@@ -53,9 +53,8 @@ a{
 }
 
 .profile img{
-    width: 30%;
+    width: 25%;
     border-radius: 50%;
-    padding: 12px 24px;
 }
 
 .btnLogout{
