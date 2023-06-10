@@ -76,7 +76,6 @@
                     <th>Điểm</th>
                 </thead>
                 <tbody id = "body-table">
-                
                 </tbody>
             </table>
         </div>
@@ -99,7 +98,7 @@
                     var item = $(`
                     <tr>
                         <td><i class="fa-solid fa-medal rank${current}"></i></td>
-                        <td>${element.username}</td>
+                        <td><a href="/profile/${element._id}">${element.username}</a></td>
                         <td>${element.school}</td>
                         <td>${element.Class}</td>
                         <td>${element.score}</td>
@@ -109,7 +108,7 @@
                 var item = $(`
                     <tr>
                         <td>${current}</td>
-                        <td>${element.username}</td>
+                        <td><a href="/profile/${element._id}">${element.username}</a></td>
                         <td>${element.school}</td>
                         <td>${element.Class}</td>
                         <td>${element.score}</td>

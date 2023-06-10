@@ -17,18 +17,40 @@
 <body>
     <header>
         <div id="nav">
-            <ul class="nav-main">
-                <li><a href="/assets/html/teacher.html"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-                <li><a href="/assets/html/teacher/create.html">Tạo tài khoản</a></li>
-                <li><a href="">Đăng bài tập</a></li>
-                <li><a href="">Danh sách học sinh</a></li>
-            </ul>
+            <nav class="nav_pc">
+                <ul class="nav-main">
+                    <li><a href="#"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li><a href="">Tạo tài khoản</a></li>
+                    <li><a href="">Đăng bài tập</a></li>
+                    <li>
+                        <a href="#">Đăng bài</a>
+                        <ul class="sub-nav">
+                            <li><a href="">Study</a></li>
+                            <li><a href="/upload/cfs">CFS</a></li>
+                            <li><a href="">Others</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/add/tkb">Cập nhật TKB</a></li>
+                </ul>
+            </nav>
+            
+
+            <label for="nav_active" class="nav_bars-btn"><i class="fa-solid fa-bars"></i></label>
+            <input type="checkbox" id="nav_active">
+            <label for="nav_active" class="nav_overlay"></label>
+            <nav class="nav_moblie">
+                <ul class="nav_moblie-list">
+                    <label for="nav_active" class="icon-xmark"><i class="fa-solid fa-xmark"></i></label>
+                    <li><a href="#"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li><a href="">Tạo tài khoản</a></li>
+                    <li><a href="">Đăng bài tập</a></li>
+                    <li><a href="/add/tkb">Cập nhật TKB</a></li>
+                </ul>
+            </nav>
+            
         </div>
         <div id="login" class="status">
-            <button class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
-        </div>
-        <div id="login" class="status active">
-            <button class="login-btn" type="submit"><a href="/assets/html/profile_hs.html"><i class="fa-solid fa-user"></i> Profile </a></button>
+            <button onclick="logout()" class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng xuất</a></button>
         </div>
     </header>
     <div class="slider-bng">
@@ -60,5 +82,11 @@
     <script src="/assets/scripts/login.js"></script>
     <script src="/assets/scripts/slider.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
+    <script>
+        function logout(){
+            delete_cookie('token')
+            window.location.href = '/home'
+        }
+    </script>
 </body>
 </html>

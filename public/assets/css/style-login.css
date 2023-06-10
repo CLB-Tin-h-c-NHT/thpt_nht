@@ -17,6 +17,7 @@
  .form_box{
    width: 90%;
    max-width: 450px;
+   min-height: 500px;
    position: absolute;
    top: 50%;
    left: 50%;
@@ -67,8 +68,9 @@
    margin-left: 15px;
    color: #999;
  }
+
  .p{
-   text-align: left;
+  text-align: left;
    font-size: 13px;
  }
  .p a{

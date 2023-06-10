@@ -10,7 +10,31 @@ router.get('/data/user', (req, res, next)=>{
     var id = jwt.verify(token, 'it_nht')
     infoModel.findOne({_id : id})
     .then(data=>{
-        res.json(data)
+        return res.json({
+            info: data,
+            check: true
+        });
+    })
+    .catch(err=>{
+        res.status(500).json("Error server!")
+    })
+})
+
+router.get('/data/user/:id', (req, res, next)=>{
+    var id = req.params.id
+    var token = req.cookies.token
+    var id2 = jwt.verify(token, 'it_nht')
+    infoModel.findOne({_id : id})
+    .then(data=>{
+        if (id == id2._id)
+        return res.json({
+            info: data,
+            check: true
+        });
+        else return res.json({
+            info: data,
+            check: false
+        });
     })
     .catch(err=>{
         res.status(500).json("Error server!")

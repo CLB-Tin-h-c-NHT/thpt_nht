@@ -72,6 +72,10 @@ tr{
     line-height: 40px;
 }
 
+td a{
+    color: #181823;
+}
+
 #leader-table th{
     color: #E76161;
 }

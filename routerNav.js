@@ -88,7 +88,7 @@ router.get('/quiz/create', (req, res, next)=>{
     res.sendFile('public/assets/html/createQuiz.html', {root: __dirname})
 })
 
-router.get('/api/upload/cfs', (req, res, next)=>{
+router.get('/upload/cfs', (req, res, next)=>{
     var token = req.cookies.token
     var id = jwt.verify(token, 'it_nht')
     accountModel.findOne({_id : id})

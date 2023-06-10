@@ -109,6 +109,21 @@ app.get('/profile', (req, res, next)=>{
   res.sendFile('public/assets/html/profile_hs.html', {root: __dirname})
 })
 
+app.get('/profile/:id', (req, res, next)=>{
+  try{
+    var token = req.cookies.token
+    var answer = jwt.verify(token, 'it_nht')
+    if (answer){
+      next()
+    }
+  } catch (error){
+    return res.redirect('/login')
+  }
+}, (req, res, next)=>{
+  res.sendFile('public/assets/html/profile_hs.html', {root: __dirname})
+})
+
+
 app.use('/data', require('./routes/getLeaderBorad'))
 app.use('/data', require('./routes/getTKB'))
 app.use('/add/tkb', require('./routes/updateTKB'))

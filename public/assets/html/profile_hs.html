@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/style-login.css">
     <link rel="stylesheet" href="/assets/css/stylepf.css">
-    <title>Thông tin</title>
+    <title>.</title>
 </head>
 <body>
     <header>
@@ -60,7 +60,7 @@
     <iframe class="phone-rotate"></iframe>
     <div class="container">
         <div class="profile">
-            <button onclick="showEdit()"><i class="fa-solid fa-pen-to-square icon"></i></button>
+            <button id = "btn_edit" onclick="showEdit()"><i class="fa-solid fa-pen-to-square icon"></i></button>
             <div id="avatar_box"></div>
             <h2 id="name"></h2>
             <div id="school">Trường: </div>
@@ -134,9 +134,14 @@
     }
 
     function updateData(data){
-        $(document).attr("title", `${data.username}`);
+        $(document).attr("title", `${data.info.username}`);
+        if (!data.info.email){
+            $("#avatar_box").append(`
+                <img id = "avatar" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=wavatar&f=y" alt="">
+            `)
+        } else 
         $.ajax({
-            url: "/data/avt/"+data.email,
+            url: "/data/avt/"+data.info.email,
             type: "GET"
         })
         .then(data=>{
@@ -147,18 +152,27 @@
         .catch(err=>{
             console.log(err)
         })
-        $("#name").append(`${data.username}`)
-        $("#school").append(`${data.school}`)
-        $("#class").append(`${data.Class}`)
-        $("#score").append(`${data.score}`)
-        $("#input_name").val(`${data.username}`)
-        $("#input_school").val(`${data.school}`)
-        $("#input_class").val(`${data.Class}`)
-        $("#input_email").val(`${data.email}`)
+        if (!data.check) $("#btn_edit").addClass('active');
+        $("#name").append(`${data.info.username}`)
+        $("#school").append(`${data.info.school}`)
+        $("#class").append(`${data.info.Class}`)
+        $("#score").append(`${data.info.score}`)
+        $("#input_name").val(`${data.info.username}`)
+        $("#input_school").val(`${data.info.school}`)
+        $("#input_class").val(`${data.info.Class}`)
+        $("#input_email").val(`${data.info.email}`)
        
     }
+    var id = ""
+    var hr = location.href
+    var i = hr.length-1
+    while (hr[i] !== '/'){
+        id = hr[i] + id;
+        i--;
+    }
+    if (id === "profile") id = "";
     $.ajax({
-        url: "/data/user",
+        url: "/data/user/" + id,
         type: "GET"
     })
     .then(data=>{
