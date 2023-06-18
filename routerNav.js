@@ -104,8 +104,28 @@ router.get('/upload/cfs', (req, res, next)=>{
     res.sendFile('public/assets/html/admin/cfs.html', {root: __dirname})
 })
 
+router.get('/upload/study', (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    accountModel.findOne({_id : id})
+    .then(data=>{
+        if (data.role === "Student" || data.role === "Teacher") res.send("<h1>Bạn không đủ quyền try cập</h1>");
+        else next()
+    })
+    .catch(err=>{
+        res.status(500).json("Error server!")
+    })
+},(req, res, next)=>{
+
+    res.sendFile('public/assets/html/admin/study.html', {root: __dirname})
+})
+
 router.get('/quiz/:id', (req, res, next)=>{
     res.sendFile('public/assets/html/quiz.html', {root: __dirname})
+})
+
+router.get('/post/:id', (req, res, next)=>{
+    res.sendFile('public/assets/html/post.html', {root: __dirname})
 })
 
 router.get('/chatAI', (req, res, next)=>{

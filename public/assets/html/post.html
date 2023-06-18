@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style-chat.css">
+</head>
+<body>
+    <header>
+        <div id="nav">
+            <nav class="nav_pc">
+                <ul class="nav-main">
+                    <li><a href="/home"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li>
+                        <a href="/tkb"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
+                    </li>
+                    <li>
+                        <a href="/quiz"><i class="fa-solid fa-book"></i> Bài tập</a>
+                    </li>
+                    <li><a href="/chat">
+                        <i class="fa-solid fa-message"></i> Thảo luận</a>
+                    </li>
+                    <li><a href="/bxh"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+                </ul>
+            </nav>
+            
+
+            <label for="nav_active" class="nav_bars-btn"><i class="fa-solid fa-bars"></i></label>
+            <input type="checkbox" id="nav_active">
+            <label for="nav_active" class="nav_overlay"></label>
+            <nav class="nav_moblie">
+                <ul class="nav_moblie-list">
+                    <label for="nav_active" class="icon-xmark"><i class="fa-solid fa-xmark"></i></label>
+                    <li><a href="/home"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li>
+                        <a href="/tkb"><i class="fa-regular fa-calendar"></i> Thời Khóa biểu</a>
+                    </li>
+                    <li>
+                        <a href="/quiz"><i class="fa-solid fa-book"></i> Bài tập</a>
+                    </li>
+                    <li><a href="/chat">
+                        <i class="fa-solid fa-message"></i> Thảo luận</a>
+                    </li>
+                    <li><a href="/bxh"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+        <div id="login" class="status">
+            <button class="login-btn" type="submit"><a href="/login"><i class="fa-solid fa-user"></i> Đăng nhập</a></button>
+        </div>
+        <div id="login" class="status active">
+            <button class="login-btn" type="submit"><a id="profile" href="/profile"><i class="fa-solid fa-user"></i> Profile </a></button>
+        </div>
+    </header>
+    <iframe class="phone-rotate" src="https://embed.lottiefiles.com/animation/45792"></iframe>
+    
+    <div class="container">
+        <div class="wrapper">
+        <div class="content-box">
+            <div id="study" class="content active">
+                <div class="post">
+                </div>
+                <div class="fb-comments" data-href= "" data-width="100%" data-numposts="3">
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="/assets/scripts/checkLogin.js"></script>
+    <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>
+    <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
+    <script>
+        var id = ""
+        var hr = location.href
+        var i = hr.length-1
+        while (hr[i] !== '/'){
+            id = hr[i] + id;
+            i--;
+        }
+        function show(data){
+            $('.post').append(`
+                <p>${data.content}</p>
+                <img src="https://drive.google.com/uc?id=${data.id_IMG}" alt=""> 
+            `)
+            $('.fb-comments').attr('data-href', `https://thpt-nht.onrender.com/post/${data._id}`)
+        }
+        if (id) getData(id);
+        else location.href = '/chat'
+        function getData(id){
+            $.ajax({
+                url: '/api/data/study/'+id,
+                method: "GET"
+            })
+            .then(data=>{
+                if (data){
+                    show(data)
+                } else {
+                    location.href = '/chat'
+                }
+            })
+            .catch(err=>{
+                console.log(err);
+                location.href = '/chat'
+            })
+        }
+    </script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0" nonce="eyOs272n"></script>
+</body>
+</html>

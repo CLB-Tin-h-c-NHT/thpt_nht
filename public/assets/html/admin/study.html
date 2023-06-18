@@ -25,13 +25,15 @@
             width: 100%;
             padding: 12px 24px;            
         }
+        .input_field.cont{
+            margin-top: 200px;
+        }
 
         .input_field{
             width: 100%;
-            height: 50%;
             display: flex;
             justify-content: center;
-            margin: 220px 0 15px;
+            margin: 10px 0 15px;
             border-radius: 3px;
             max-height: 65px;
             transition: max-height 0;
@@ -107,8 +109,12 @@
             <button onclick="logout()" class="login-btn" type="submit"><a href="/assets/html/login.html"><i class="fa-solid fa-user"></i> Đăng xuất</a></button>
         </div>
     </header>
+    <div class="input_field cont">
+        <textarea id="content" placeholder="Nội dung"></textarea> 
+    </div>
+
     <div class="input_field">
-        <textarea id="content"></textarea>
+        <input id="id_IMG" placeholder="ID IMG"></input> 
     </div>
     <br>
     <div class="uploadBtn">
@@ -118,10 +124,11 @@
     <script>
         function upload(){
             $.ajax({
-            url: '/api/upload/cfs',
+            url: '/api/upload/study',
             method: "POST",
             data:{
-                content: $('#content').val()
+                content: $('#content').val(),
+                id_IMG: $('#id_IMG').val(),
             }
             })
             .then(data=>{
@@ -132,7 +139,6 @@
                 console.log(err)
             })
         }
-        
     </script>
 </body>
 </html>

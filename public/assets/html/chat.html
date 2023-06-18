@@ -77,27 +77,6 @@
                     <button type="submit" class="uploadBtn"><a href="https://forms.gle/u4mBb9C2ZsGmFDsW9">Đăng bài</a></button>
                 </div>
                 <h2>Study</h2>
-                <div class="post">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptates est qui debitis dignissimos repellendus, sed sit error molestias delectus culpa provident tempore odio in recusandae dolores nostrum dolor possimus?</p>
-                   <img src="https://data.designervn.net/2019/11/10084_e714ad215c224ef698590218e91ae8d0.png" alt=""> 
-                   <div class="comment">
-                    
-                    </div>
-                </div>
-                <div class="post">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptates est qui debitis dignissimos repellendus, sed sit error molestias delectus culpa provident tempore odio in recusandae dolores nostrum dolor possimus?</p>
-                   <img src="https://data.designervn.net/2019/11/10084_e714ad215c224ef698590218e91ae8d0.png" alt=""> 
-                   <div class="comment">
-                    
-                    </div>
-                </div>
-                <div class="post">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptates est qui debitis dignissimos repellendus, sed sit error molestias delectus culpa provident tempore odio in recusandae dolores nostrum dolor possimus?</p>
-                   <img src="https://data.designervn.net/2019/11/10084_e714ad215c224ef698590218e91ae8d0.png" alt=""> 
-                   <div class="comment">
-                    
-                    </div>
-                </div>
             </div>
     
             <div id="cfs" class="content">
@@ -124,12 +103,35 @@
             method: "GET"
         })
         .then(data=>{
-            console.log(data)
             showCFS(data)
         })
         .catch(err=>{
             console.log(err)
         })
+        $.ajax({
+            url: 'api/data/study',
+            method: "GET"
+        })
+        .then(data=>{
+            showPOST(data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+
+        function showPOST(data){
+            for (let index = 0; index < data.length; index++) {
+                const element = data[index];
+                let content = element.content
+                if (content.length > 80) content = content.substring(0, 75) + '...'
+                // console.log(content);
+                $('#study').append(`
+                    <div class="post">
+                        <a href="/post/${element._id}">${content}</a>
+                    </div>
+                `)
+            }
+        }
 
         function showCFS(data){
             let limit = 3

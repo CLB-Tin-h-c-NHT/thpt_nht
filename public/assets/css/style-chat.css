@@ -110,6 +110,10 @@ body{
     width: 100%;
 }
 
+.post p{
+    word-wrap: break-word;
+}
+
 .tag-cfs{
     font-weight: 500;
     color: #F1F6F9;
