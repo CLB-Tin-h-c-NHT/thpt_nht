@@ -11,7 +11,7 @@
     <meta property = "og:description" content="Trang web do nhóm IT NHT tạo ra">
     <meta property="og:url" content="https://thpt-nht.onrender.com">
     <meta property="og:locale" content="vi_VN">
-  <title>Đăng ký</title>
+  <title>Tạo tài khoản</title>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/style-login.css">
   <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
@@ -22,7 +22,7 @@
   <iframe class="phone-rotate" src="https://embed.lottiefiles.com/animation/45792"></iframe>
   <div class="container">
     <div class="form_box">
-      <h1 id="title">Đăng kí</h1>
+      <h1 id="title">Tạo tài khoản</h1>
       <div id="success_message" class="active">Tạo thành công</div>
       <div id="error_message" class="active"></div>
       <div id="register-form">
@@ -38,19 +38,17 @@
           <div class="input_field">
             <i class="fa-solid fa-lock"></i>
             <input type="password" placeholder="Password" id="password" name="password">
-          </div>    
-          <div class="input_field" id="class_field">
-            <i class="fa-solid fa-users-class"></i>
-            <input type="text" placeholder="Trường" id="school">
-            <i class="fa-solid fa-users-class"></i>
-            <input type="text" placeholder="Lớp" id="class">
           </div>   
+          <div class="input_field">
+            <select name="role" id="role">
+                <option value="Admin" disabled selected>Chọn chức vụ</option>
+                <option value="Admin">Admin</option>
+                <option value="Teacher">Giáo viên</option>
+              </select>   
+          </div>
           
           <div class="input_field">
             <input onclick="register()" type="submit" text="Gửi" id="submit">
-          </div>      
-          <div class="choice">
-            <p >Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
           </div>    
         </div>
       </div>
@@ -90,8 +88,6 @@
   function register(){
       if (!$('#name').val()) return showErr("Vui lòng điền tên")
       if (!$('#password').val()) return showErr("Vui lòng điền mật khẩu")
-      if (!$('#school').val()) return showErr("Vui lòng nhập tên trường")
-      if (!$('#class').val()) return showErr("Vui lòng nhập lớp")
       if (!$('#email').val()) return showErr("Vui lòng nhập email")
 
       var username = $('#name').val()
@@ -103,7 +99,7 @@
         data:{
           username: username,
           password: $('#password').val(),
-          role: "Student",
+          role: $('#role').val(),
           email: $('#email').val(),
           quiz: []
         }
@@ -112,7 +108,8 @@
         if (data === 'Username da ton tai') alert("Username đã tồn tại")
         else if (data === 'Email da ton tai') alert("Username đã tồn tại")
         else {
-          update(data)
+            $("#error_message").addClass('active')
+            $('#success_message').removeClass('active')
         }
       })
       .catch(err=>{

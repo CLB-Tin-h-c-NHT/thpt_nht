@@ -5,6 +5,32 @@ app.use(express.static('public'))
 var accountModel = require('./models/account.js')
 const jwt = require('jsonwebtoken')
 
+var checkAdmin = (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    accountModel.findOne({_id : id})
+    .then(data=>{
+        if (data.role === "Student" || data.role === "Teacher") res.send("<h1>Bạn không đủ quyền try cập</h1>");
+        else next()
+    })
+    .catch(err=>{
+        res.status(500).json("Error server!")
+    })
+}
+
+var checkNotStudent = (req, res, next)=>{
+    var token = req.cookies.token
+    var id = jwt.verify(token, 'it_nht')
+    accountModel.findOne({_id : id})
+    .then(data=>{
+        if (data.role === "Student") res.send("<h1>Bạn không đủ quyền try cập</h1>");
+        else next()
+    })
+    .catch(err=>{
+        res.status(500).json("Error server!")
+    })
+}
+
 router.get('/home', (req, res, next) =>{
     try{
         var token = req.cookies.token
@@ -73,51 +99,29 @@ router.get('/quiz', (req, res, next)=>{
     res.sendFile('public/assets/html/menuQuiz.html', {root: __dirname})
 })
 
-router.get('/quiz/create', (req, res, next)=>{
-    var token = req.cookies.token
-    var id = jwt.verify(token, 'it_nht')
-    accountModel.findOne({_id : id})
-    .then(data=>{
-        if (data.role === "Student") res.send("<h1>Bạn không đủ quyền try cập</h1>");
-        else next()
-    })
-    .catch(err=>{
-        res.status(500).json("Error server!")
-    })
-},(req, res, next)=>{
+router.get('/quiz/create', checkNotStudent,(req, res, next)=>{
     res.sendFile('public/assets/html/createQuiz.html', {root: __dirname})
 })
 
-router.get('/upload/cfs', (req, res, next)=>{
-    var token = req.cookies.token
-    var id = jwt.verify(token, 'it_nht')
-    accountModel.findOne({_id : id})
-    .then(data=>{
-        if (data.role === "Student" || data.role === "Teacher") res.send("<h1>Bạn không đủ quyền try cập</h1>");
-        else next()
-    })
-    .catch(err=>{
-        res.status(500).json("Error server!")
-    })
-},(req, res, next)=>{
+router.get('/upload/cfs', checkAdmin,(req, res, next)=>{
 
     res.sendFile('public/assets/html/admin/cfs.html', {root: __dirname})
 })
 
-router.get('/upload/study', (req, res, next)=>{
+router.get('/upload/study', checkNotStudent ,(req, res, next)=>{
     var token = req.cookies.token
     var id = jwt.verify(token, 'it_nht')
     accountModel.findOne({_id : id})
     .then(data=>{
-        if (data.role === "Student" || data.role === "Teacher") res.send("<h1>Bạn không đủ quyền try cập</h1>");
-        else next()
+        if (data.role === "Teacher"){
+            res.sendFile('public/assets/html/teacher/study.html', {root: __dirname})        
+        } else {
+            res.sendFile('public/assets/html/admin/study.html', {root: __dirname})
+        }
     })
     .catch(err=>{
-        res.status(500).json("Error server!")
+        res.status(500).json("Error server")
     })
-},(req, res, next)=>{
-
-    res.sendFile('public/assets/html/admin/study.html', {root: __dirname})
 })
 
 router.get('/quiz/:id', (req, res, next)=>{
@@ -130,6 +134,14 @@ router.get('/post/:id', (req, res, next)=>{
 
 router.get('/chatAI', (req, res, next)=>{
     res.sendFile('public/assets/html/chatGPT.html', {root: __dirname})
+})
+
+router.get('/account/create/admin', checkAdmin,(req, res, next)=>{
+    res.sendFile('public/assets/html/admin/createAccount.html', {root: __dirname})
+})
+
+router.get('/account/create/teacher', checkNotStudent,(req, res, next)=>{
+    res.sendFile('public/assets/html/teacher/createAccount.html', {root: __dirname})
 })
 
 module.exports = router

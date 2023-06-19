@@ -58,42 +58,43 @@
         </div>
     </header>
     <iframe class="phone-rotate"></iframe>
-    <div class="container">
-        <div class="profile">
-            <button id = "btn_edit" onclick="showEdit()"><i class="fa-solid fa-pen-to-square icon"></i></button>
-            <div id="avatar_box"></div>
-            <h2 id="name"></h2>
-            <div id="school">Trường: </div>
-            <div id="class">Lớp: </div>
-            <div id="score">Điểm: </div>
-            <div id="logout">
-                <button onclick="logout()" type="submit" class="btnLogout">Đăng xuất</button>
+    <div class="wrapper">
+        <div class="container">
+            <div class="profile">
+                <button id = "btn_edit" onclick="showEdit()"><i class="fa-solid fa-pen-to-square icon"></i></button>
+                <div id="avatar_box"></div>
+                <h2 id="name"></h2>
+                <div id="school">Trường: </div>
+                <div id="class">Lớp: </div>
+                <div id="score">Điểm: </div>
+                <div id="logout">
+                    <button onclick="logout()" type="submit" class="btnLogout">Đăng xuất</button>
+                </div>
             </div>
-        </div>
-        <div class="edit__box active">
-            <div id="message">Lưu ý: Chỉ thay đổi họ và tên hiển thị username không thay đổi</div>
+            <div class="edit__box active">
+                <div id="message">Lưu ý: Chỉ thay đổi họ và tên hiển thị username không thay đổi</div>
 
-            <div id="success_message" class="active">Cập nhật thành công</div>
-            <div id="error_message" class="active"></div>
-            <div class="input_field">
-                <input type="name" placeholder="Họ và tên" id="input_name" name="name">
-            </div>  
-            <div class="input_field">
-                <input type="school" placeholder="Trường" id="input_school" name="school">
-            </div>  
-            <div class="input_field">
-                <input type="class" placeholder="Lớp" id="input_class" name="class">
-            </div>  
-            <div class="input_field">
-                <input type="email" placeholder="Email" id="input_email" name="email">
-            </div>  
-            <a href="https://en.gravatar.com/">Đổi ảnh đại diện của bạn</a>
-            <div id="logout">
-                <button onclick="updateEdit()" type="submit" class="btnLogout">Cập nhật</button>
+                <div id="success_message" class="active">Cập nhật thành công</div>
+                <div id="error_message" class="active"></div>
+                <div class="input_field">
+                    <input type="name" placeholder="Họ và tên" id="input_name" name="name">
+                </div>  
+                <div class="input_field">
+                    <input type="school" placeholder="Trường" id="input_school" name="school">
+                </div>  
+                <div class="input_field">
+                    <input type="class" placeholder="Lớp" id="input_class" name="class">
+                </div>  
+                <div class="input_field">
+                    <input type="email" placeholder="Email" id="input_email" name="email">
+                </div>  
+                <a href="https://en.gravatar.com/">Đổi ảnh đại diện của bạn</a>
+                <div id="logout">
+                    <button onclick="updateEdit()" type="submit" class="btnLogout">Cập nhật</button>
+                </div>
             </div>
         </div>
     </div>
-
     
     <script src="/assets/scripts/jquery-min-3.6.4.js"></script>
     <script src="https://kit.fontawesome.com/5d4cf7ec72.js" crossorigin="anonymous"></script>

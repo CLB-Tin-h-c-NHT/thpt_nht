@@ -16,8 +16,7 @@ body{
 
 
 header{
-    background: #202123;
-    backdrop-filter: blur(20px);
+    background-color: #202123;
 }
 
 .nav-main li:hover > a{

@@ -9,13 +9,12 @@ body{
 }
 
 header{
-    background-color: transparent;
-    border-bottom: 5px solid #162938;
-    backdrop-filter: blur(20px);
+    background-color: #162938;
+    border-bottom: 5px solid #fff;
 }
 
 header a{
-    color: #162938;
+    color: #fff;
 }
 
 #nav .sub-nav{
@@ -25,8 +24,8 @@ header a{
 }
 
 .nav-main li:hover > a{
-    background-color: #162938;
-    color: #fff;
+    background-color: #fff;
+    color: #162938;
 }
 
 .container{
