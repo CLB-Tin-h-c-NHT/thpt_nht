@@ -387,12 +387,12 @@ footer > a{
         border: none;
     }
 
-    body{
-        background: #000;
+    body, section{
+        width: 0px;
+        height: 0px;
     }
 
-    .slider-bng, #content, .introduce, header, footer, .container, #leader-main
-    {
-        display: none;
+    :not(.phone-rotate, body, html) {
+        display: none !important;
     }
 }
